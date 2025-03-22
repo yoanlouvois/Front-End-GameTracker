@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
+  standalone: true,  // Composant standalone
+  imports: [RouterModule],  // Importer le module de routage et le composant HelloPage
 })
 export class AppComponent {
-  title = 'mon-premier-projet';
+  title = 'Mon Application';
 }
