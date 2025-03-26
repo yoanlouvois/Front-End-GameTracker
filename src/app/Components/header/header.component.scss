@@ -1,0 +1,66 @@
+/* Réinitialisation du style */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+  background: #221E55;
+  padding: 10px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-family: 'Orbitron', sans-serif;
+  color: #D000BB;
+  font-weight: bold;
+}
+
+.nav {
+  display: flex;
+  gap: 15px;
+}
+
+.nav div {
+  font-size: 0.9rem;
+  color: #FFFFFF; /* Ajout de la couleur blanche */
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.nav div:hover {
+  color: #D000BB;
+}
+
+.profile {
+  background: #D000BB;
+  padding: 8px 15px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  color: white;
+}
+
+.profile:hover {
+  opacity: 0.8;
+}
+
+/* Adaptation pour les petits écrans */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

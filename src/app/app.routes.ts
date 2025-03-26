@@ -1,11 +1,11 @@
 import {Routes, RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
-import {EcranAccueil} from './ecran-accueil/ecran-accueil';
-import {EcranAProposDeNousComponent} from './ecran-a-propos-de-nous/ecran-a-propos-de-nous.component';
-import {EcranConnexionComponent} from './ecran-connexion/ecran-connexion.component';
-import {EcranInscriptionComponent} from './ecran-inscription/ecran-inscription.component';
-import {EcranJeuComponent} from './ecran-jeu/ecran-jeu.component';
-import {EcranListeJeuxComponent} from './ecran-liste-jeux/ecran-liste-jeux.component';
+import {EcranAccueil} from './Ecrans/ecran-accueil/ecran-accueil';
+import {EcranAProposDeNousComponent} from './Ecrans/ecran-a-propos-de-nous/ecran-a-propos-de-nous.component';
+import {EcranConnexionComponent} from './Ecrans/ecran-connexion/ecran-connexion.component';
+import {EcranInscriptionComponent} from './Ecrans/ecran-inscription/ecran-inscription.component';
+import {EcranJeuComponent} from './Ecrans/ecran-jeu/ecran-jeu.component';
+import {EcranListeJeuxComponent} from './Ecrans/ecran-liste-jeux/ecran-liste-jeux.component';
 
 
 export const routes: Routes = [
