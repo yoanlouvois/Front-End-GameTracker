@@ -17,8 +17,18 @@
 .logo {
   font-size: 1.5rem;
   font-family: 'Orbitron', sans-serif;
-  color: #D000BB;
+  color: #D000BB; /* Couleur par défaut */
   font-weight: bold;
+  cursor: pointer; /* Ajout du curseur pointer pour le rendre cliquable */
+  transition: color 0.3s ease; /* Transition fluide sur les changements */
+}
+
+.logo:hover {
+  color: #9A0080; /* Couleur de surbrillance au survol : plus sombre */
+}
+
+.logo:active {
+  color: #750061; /* Couleur temporaire lors du clic : encore plus sombre */
 }
 
 .nav {
@@ -31,6 +41,7 @@
   color: #FFFFFF; /* Ajout de la couleur blanche */
   cursor: pointer;
   transition: color 0.3s;
+  font-family: 'Inter', serif;
 }
 
 .nav div:hover {
@@ -45,6 +56,7 @@
   cursor: pointer;
   transition: opacity 0.3s;
   color: white;
+  font-family: 'Inter',serif;
 }
 
 .profile:hover {

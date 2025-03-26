@@ -29,4 +29,8 @@ export class HeaderComponent {
   goToProfile() {
     this.router.navigate(['/Connexion']);
   }
+
+  goToHome() {
+    this.router.navigate(['/Home']);
+  }
 }
