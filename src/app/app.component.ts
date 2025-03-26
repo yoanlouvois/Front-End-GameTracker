@@ -8,7 +8,7 @@ import {LayoutComponent} from './Components/layout/layout.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,  // Composant standalone
-  imports: [RouterModule, HeaderComponent, LayoutComponent],  // Importer le module de routage et le composant HelloPage
+  imports: [RouterModule, LayoutComponent],  // Importer le module de routage et le composant HelloPage
 })
 export class AppComponent {
   title = 'Mon Application';

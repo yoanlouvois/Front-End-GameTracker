@@ -3,9 +3,7 @@ import {RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-new-component',
-  imports: [
-    RouterOutlet
-  ],
+  imports: [],
   templateUrl: './ecran-accueil.html',
   styleUrl: './ecran-accueil.scss'
 })
