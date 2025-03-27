@@ -1,0 +1,70 @@
+// Utilisation de variables SCSS pour faciliter les changements
+$primary-bg-color: #170b2f;
+$secondary-bg-color: #221e55;
+$text-color: white;
+$highlight-color: #d000bb;
+
+.about-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: $primary-bg-color; // Couleur de fond principale
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px; // Espaces internes
+  text-align: left;
+
+  .about-content {
+    max-width: 80%;
+    color: $text-color;
+
+    h1 {
+      font-family: "Inter", sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-family: "Inter", sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-family: "Inter", sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+
+      li {
+        font-family: "Inter", sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.8;
+        margin-bottom: 10px;
+      }
+    }
+
+    .contact-link {
+      color: $highlight-color;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s;
+
+      &:hover {
+        color: lighten($highlight-color, 15%);
+      }
+    }
+  }
+}
