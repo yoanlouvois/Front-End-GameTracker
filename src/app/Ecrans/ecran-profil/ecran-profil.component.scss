@@ -1,0 +1,220 @@
+:root {
+  --Border-Brand-Default: #2C2C2C; /* Couleur par défaut */
+}
+
+/* Conteneur principal */
+.profile-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Image du profil */
+.profile-img {
+  width: 182px;
+  height: 182px;
+  left: 78px;
+  top: 30px;
+  position: absolute;
+  border-radius: 100px;
+}
+
+/* Nom du joueur */
+.player-name {
+  width: 296px;
+  height: 85px;
+  left: 259px;
+  top: 40px;
+  position: absolute;
+  text-align: center;
+  color: white;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+/* Bouton Editer le profil */
+.edit-profile {
+  width: 197px;
+  height: 45px;
+  padding: 12px;
+  left: 308px;
+  top: 113px;
+  position: absolute;
+  background: #221E55;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-family: Inter;
+  font-weight: 600;
+  border: 1px solid #2C2C2C;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transition ajoutée */
+}
+
+.edit-profile:hover {
+  background-color: #b30080; /* Changer la couleur au survol */
+  transform: scale(1.05); /* Effet de léger agrandissement au survol */
+}
+
+/* Label AMIS */
+.friends-label {
+  width: 152px;
+  height: 45px;
+  left: 554px;
+  top: 64px;
+  position: absolute;
+  text-align: center;
+  color: #A9A8A8;
+  font-size: 24px;
+  font-family: Inter;
+}
+
+/* Nombre d'amis */
+.friends-count {
+  width: 152px;
+  height: 45px;
+  left: 554px;
+  top: 132px;
+  position: absolute;
+  text-align: center;
+  color: white;
+  font-size: 48px;
+  font-family: Inter;
+}
+
+/* Label HEURES DE JEU */
+.hours-label {
+  width: 152px;
+  height: 45px;
+  left: 767px;
+  top: 60px;
+  position: absolute;
+  text-align: center;
+  color: #A9A8A8;
+  font-size: 24px;
+  font-family: Inter;
+}
+
+/* Nombre d'heures de jeu */
+.hours-count {
+  width: 152px;
+  height: 45px;
+  left: 767px;
+  top: 134px;
+  position: absolute;
+  text-align: center;
+  color: white;
+  font-size: 48px;
+  font-family: Inter;
+}
+
+/* Label RANG */
+.rank-label {
+  width: 152px;
+  height: 45px;
+  left: 980px;
+  top: 60px;
+  position: absolute;
+  text-align: center;
+  color: #A9A8A8;
+  font-size: 24px;
+  font-family: Inter;
+}
+
+/* Rang du joueur */
+.rank-count {
+  width: 152px;
+  height: 45px;
+  left: 980px;
+  top: 134px;
+  position: absolute;
+  text-align: center;
+  color: white;
+  font-size: 48px;
+  font-family: Inter;
+}
+
+/* Bouton rond 1 */
+.round-btn-1 {
+  width: 77px;
+  height: 77px;
+  left: 1199px;
+  top: 36px;
+  position: absolute;
+  background: #221E55;
+  border: none;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transition ajoutée */
+}
+
+.round-btn-1:hover {
+  background-color: #b30080; /* Change la couleur du bouton rond 1 au survol */
+  transform: scale(1.05); /* Effet d'agrandissement au survol */
+}
+
+/* Bouton rond 2 */
+.round-btn-2 {
+  width: 77px;
+  height: 77px;
+  left: 1199px;
+  top: 133px;
+  position: absolute;
+  background: #221E55;
+  border: none;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transition ajoutée */
+}
+
+.round-btn-2:hover {
+  background-color: #b30080; /* Change la couleur du bouton rond 2 au survol */
+  transform: scale(1.05); /* Effet d'agrandissement au survol */
+}
+
+/* Icône */
+.icon {
+  width: 35px;
+  height: 35px;
+  left: 1220px;
+  top: 57px;
+  position: absolute;
+}
+
+/* Bouton avec bordure circulaire */
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  left: 1220px;
+  top: 153px;
+  position: absolute;
+  background: transparent;
+  border: 4px solid white;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transition ajoutée */
+}
+
+.icon-btn:hover {
+  background-color: #b30080; /* Change la couleur du bouton circulaire au survol */
+  transform: scale(1.05); /* Effet d'agrandissement au survol */
+}
+
+/* Bouton Social */
+.social-btn {
+  width: 197px;
+  height: 45px;
+  padding: 12px;
+  left: 308px;
+  top: 173px;
+  position: absolute;
+  background: #221E55;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-family: Inter;
+  font-weight: 600;
+  border: 1px solid #2C2C2C;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transition ajoutée */
+}
+
+.social-btn:hover {
+  background-color: #b30080; /* Change la couleur du bouton social au survol */
+  transform: scale(1.05); /* Effet d'agrandissement au survol */
+}

@@ -1,32 +1,32 @@
 import { Component } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatIcon} from '@angular/material/icon';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {NgIf} from '@angular/common';
 import {MatButton, MatIconButton} from '@angular/material/button';
+import {MatIcon} from '@angular/material/icon';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-ecran-connexion',
+  selector: 'app-ecran-editer-profil',
   imports: [
-    ReactiveFormsModule,
     FormsModule,
-    MatIcon,
-    MatLabel,
+    MatButton,
     MatFormField,
+    MatIcon,
     MatIconButton,
     MatInput,
-    MatButton,
+    MatLabel,
     NgIf,
+    ReactiveFormsModule
   ],
-  templateUrl: './ecran-connexion.component.html',
-  styleUrl: './ecran-connexion.component.scss'
+  templateUrl: './ecran-editer-profil.component.html',
+  styleUrl: './ecran-editer-profil.component.scss'
 })
-export class EcranConnexionComponent {
+export class EcranEditerProfilComponent {
   username: any;
   password: any;
   constructor(private router: Router) { }
-  goToAccueil() {
-    this.router.navigate(['/Home']);
+  goToProfil() {
+    this.router.navigate(['/Profil']);
   }
 }

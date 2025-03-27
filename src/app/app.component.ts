@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {HeaderComponent} from './Components/header/header.component';
 import {LayoutComponent} from './Components/layout/layout.component';
+import {EcranConnexionComponent} from './Ecrans/ecran-connexion/ecran-connexion.component';
 
 @Component({
   selector: 'app-root',

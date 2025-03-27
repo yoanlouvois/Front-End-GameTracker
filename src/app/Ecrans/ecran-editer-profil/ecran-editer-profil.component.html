@@ -1,6 +1,6 @@
 <div class="login-container">
   <main class="main-content">
-    <h1 class="title">Rentrez vos identifiants</h1>
+    <h1 class="title">Choisissez un nouveau pseudo</h1>
 
     <form class="login-form">
       <div class="form-group">
@@ -24,10 +24,12 @@
       </div>
 
       <div class="button-group">
-        <button mat-raised-button color="primary" type="submit" (click)="goToAccueil()">Valider</button>
-        <button mat-raised-button color="warn" type="button" (click)="goToAccueil()">Annuler</button>
-        <button mat-raised-button color="accent" type="button" (click)="goToAccueil()">Créer un compte</button>
+        <button mat-raised-button color="primary" type="submit" (click)="goToProfil()">Valider</button>
+        <button mat-raised-button color="warn" type="button" (click)="goToProfil()">Annuler</button>
       </div>
     </form>
   </main>
+
+  <!-- Grosse icône ronde cliquable -->
+  <button class="icon-btn" (click)="goToProfil()"></button>
 </div>

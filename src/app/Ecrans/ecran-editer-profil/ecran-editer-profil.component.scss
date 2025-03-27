@@ -140,6 +140,26 @@ button[mat-icon-button] {
 .btn {
   min-width: 120px; /* Permet d'avoir des boutons de taille cohérente */
 }
+/* Icône ronde cliquable à gauche */
+.icon-btn {
+  width: 200px;
+  height:200px;
+  position: absolute;
+  left: 220px; /* Positionne l'icône à gauche */
+  top: 350px; /* Positionne l'icône un peu en dessous du haut de l'écran */
+  background-color: #221E55; /* Couleur de fond de l'icône */
+  border-radius: 50%; /* Fait de l'élément un cercle */
+  border: none; /* Pas de bordure */
+  cursor: pointer; /* Change le curseur pour une main cliquable */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-btn mat-icon {
+  color: white;
+  font-size: 36px; /* Taille de l'icône */
+}
 /* Style du formulaire de connexion */
 .login-form {
   width: 100%; /* Le formulaire prend toute la largeur disponible */
