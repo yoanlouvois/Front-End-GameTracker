@@ -9,7 +9,7 @@ import {EcranConnexionComponent} from './Ecrans/ecran-connexion/ecran-connexion.
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,  // Composant standalone
-  imports: [RouterModule, LayoutComponent, EcranConnexionComponent],  // Importer le module de routage et le composant HelloPage
+  imports: [RouterModule, LayoutComponent],  // Importer le module de routage et le composant HelloPage
 })
 export class AppComponent {
   title = 'Mon Application';
