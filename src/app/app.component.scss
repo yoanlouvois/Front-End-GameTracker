@@ -1,6 +1,13 @@
 ::ng-deep * {
-
+  box-sizing: border-box; /* Gère marges et bordures correctement */
   margin: 0;
   padding: 0;
 }
+
+::ng-deep app-layout {
+  max-width: 100%; /* Empêche les débordements de layout */
+  overflow-x: hidden; /* Assure qu'aucun contenu ne dépasse horizontalement */
+  display: block;
+}
+
 

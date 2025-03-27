@@ -1,0 +1,134 @@
+// Variables pour des couleurs personnalisées
+$primary-bg-color: #170b2f; // Couleur de fond principale
+$secondary-bg-color: #221e55; // Couleur secondaire (fond des cartes)
+$accent-color: #d000bb; // Couleur d'accent
+$text-color: white; // Couleur du texte
+$border-color: #d9d9d9; // Couleur des bordures
+$placeholder-color: #757575; // Couleur du placeholder
+
+.games-section {
+  width: 100%;
+  min-height: 100vh;
+  background-color: $primary-bg-color;
+  color: $text-color;
+  padding: 2rem 1rem;
+
+  .header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    .title {
+      font-family: 'Inter', sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .search-container {
+      .search-bar {
+        width: 300px;
+        height: 45px;
+        padding: 12px 16px;
+        border: 1px solid $border-color;
+        border-radius: 9999px;
+        font-size: 16px;
+        outline: none;
+
+        &::placeholder {
+          color: $placeholder-color;
+        }
+      }
+    }
+  }
+
+  .accordion-container {
+    margin-bottom: 2rem;
+
+    .accordion-item {
+      background: $secondary-bg-color;
+      border-radius: 8px;
+      padding: 16px;
+      cursor: pointer;
+
+      .accordion-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $text-color;
+        font-size: 16px;
+        font-weight: 500;
+
+        .accordion-icon {
+          font-size: 14px;
+        }
+      }
+
+      .accordion-body {
+        margin-top: 1rem;
+
+        .sort-button {
+          background: transparent;
+          color: $accent-color;
+          border: none;
+          padding: 0.5rem 0;
+          cursor: pointer;
+          text-decoration: underline;
+
+          &:hover {
+            color: lighten($accent-color, 10%);
+          }
+        }
+      }
+    }
+  }
+
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+
+    .game-item {
+      background: $secondary-bg-color;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .game-thumbnail {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+      }
+
+      .game-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 0.5rem 0;
+        color: $text-color;
+      }
+
+      .game-rating {
+        display: flex;
+        justify-content: center;
+        gap: 0.2rem;
+
+        .star {
+          color: gold;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
