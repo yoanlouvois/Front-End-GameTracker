@@ -1,1 +1,47 @@
-<p>ecran-inscription works!</p>
+<div class="login-container">
+  <main class="main-content">
+    <h1 class="title">Veuillez rentrer un pseudo et un mot de passe</h1>
+
+    <form class="login-form">
+      <div class="form-group">
+        <mat-form-field class="mat" appearance="outline">
+          <mat-label>Pseudo</mat-label>
+          <input matInput [(ngModel)]="username" name="username" placeholder="Entrez votre pseudo">
+          <button *ngIf="username" mat-icon-button aria-label="Clear" (click)="username=''">
+            <mat-icon>✖</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field class="mat" appearance="outline">
+          <mat-label>Mot de passe</mat-label>
+          <input matInput type="password" [(ngModel)]="password" name="password" placeholder="Entrez votre mot de passe">
+          <button *ngIf="password" mat-icon-button aria-label="Clear" (click)="password=''">
+            <mat-icon>✖</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field class="mat" appearance="outline">
+          <mat-label> Verifier Mot de passe</mat-label>
+          <input matInput type="password" [(ngModel)]="password" name="password" placeholder="Entrez votre mot de passe">
+          <button *ngIf="password" mat-icon-button aria-label="Clear" (click)="password=''">
+            <mat-icon>✖</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <div class="button-group">
+        <button mat-raised-button color="primary" type="submit" (click)="goToAccueil()">Valider</button>
+        <button mat-raised-button color="warn" type="button" (click)="goToAccueil()">Annuler</button>
+      </div>
+
+      <div class="button-connect">
+        <div class="btn-change" (click)="goToConnexion()">Déja un compte ?</div>
+      </div>
+
+    </form>
+  </main>
+</div>

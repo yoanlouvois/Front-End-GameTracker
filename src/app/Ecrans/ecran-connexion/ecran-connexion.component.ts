@@ -26,7 +26,12 @@ export class EcranConnexionComponent {
   username: any;
   password: any;
   constructor(private router: Router) { }
-  goToAccueil() {
-    this.router.navigate(['/Home']);
+
+  goToInscription() {
+    this.router.navigate(['/Inscription']);
+  }
+
+  goToAccueil(){
+    this.router.navigate(['/Home'])
   }
 }

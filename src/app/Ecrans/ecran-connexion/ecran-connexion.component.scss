@@ -80,7 +80,7 @@
   max-width: 400px; /* Définit une largeur maximale pour le formulaire */
   display: flex; /* Utilise Flexbox pour organiser les éléments */
   flex-direction: column; /* Organise les éléments en colonne */
-  gap: 1.5rem; /* Ajoute un espacement entre les éléments */
+  gap: 0.6rem; /* Ajoute un espacement entre les éléments */
 }
 
 button[mat-icon-button] mat-icon {
@@ -146,7 +146,7 @@ button[mat-icon-button] {
   max-width: 400px; /* Définit une largeur maximale pour le formulaire */
   display: flex; /* Utilise Flexbox pour organiser les éléments */
   flex-direction: column; /* Organise les éléments en colonne */
-  gap: 1.5rem; /* Ajoute un espacement entre les éléments */
+  gap: 0.6rem; /* Ajoute un espacement entre les éléments */
   padding: 1.5rem; /* Ajoute un espacement interne autour du formulaire */
   border: 2px solid #d000bb; /* Contour rose autour du formulaire */
   border-radius: 8px; /* Bord arrondi pour le formulaire */
@@ -164,4 +164,23 @@ button[mat-icon-button] {
   margin-bottom: 1rem; /* Espace entre les champs */
   color: #4c67ec;
   font-weight: bold; /* Met le texte en gras */
+}
+
+/* Style spécifique au lien "Créer un compte" */
+.button-connect {
+  text-align: center; /* Centre le bouton horizontalement */
+}
+
+/* Style pour le bouton secondaire "Créer un compte" */
+.btn-change {
+  color: #d000bb; /* Couleur du texte rose */
+  font-size: 1rem; /* Taille du texte cohérente */
+  background: none; /* Pas de couleur de fond */
+  border: none; /* Supprime la bordure par défaut */
+  cursor: pointer; /* Montre que le bouton est cliquable */
+  padding: 0.5rem; /* Espacement interne autour du texte */
+}
+
+.btn-change:hover {
+  color: #c753c3; /* Couleur rose plus clair lors du survol */
 }
