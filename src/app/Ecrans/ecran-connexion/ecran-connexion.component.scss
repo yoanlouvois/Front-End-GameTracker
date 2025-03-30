@@ -64,8 +64,7 @@
   display: flex; /* Utilise Flexbox pour disposer les éléments */
   flex-direction: column; /* Dispose les éléments en colonne */
   align-items: center; /* Centre horizontalement les éléments */
-  justify-content: center; /* Centre verticalement les éléments */
-  padding: 2rem; /* Ajoute un espacement interne autour du contenu */
+  margin: 30px;
 }
 
 .title {
