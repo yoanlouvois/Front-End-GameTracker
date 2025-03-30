@@ -27,10 +27,13 @@ export class HeaderComponent {
   }
 
   goToProfile() {
-    this.router.navigate(['/Connexion']);
+    this.router.navigate(['/Profil']);
   }
 
   goToHome() {
     this.router.navigate(['/Home']);
+  }
+  goToEcranConnexion() {
+    this.router.navigate(['/Connexion']);
   }
 }

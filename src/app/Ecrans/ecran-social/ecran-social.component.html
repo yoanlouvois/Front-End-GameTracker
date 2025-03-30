@@ -1,1 +1,24 @@
-<p>ecran-social works!</p>
+<div class="container">
+  <header class="header">
+    <div class="title">Vos amis</div>
+  </header>
+
+  <section class="separator"></section>
+  <button class="action-button" (click)="goAjouterAmi()" >Ajouter un ami</button>
+  <!-- Liste des utilisateurs -->
+  <div class="user-list">
+    <section *ngFor="let friend of friends" class="user-card">
+      <div class="user-avatar">
+        <img [src]="friend.avatar" alt="User Avatar" />
+      </div>
+      <div class="user-info">
+        <span class="user-name">{{ friend.name }}</span>
+      </div>
+      <div class="user-actions">
+        <img *ngFor="let action of friend.actions" [src]="action" alt="Action Icon" />
+      </div>
+    </section>
+  </div>
+
+
+</div>
