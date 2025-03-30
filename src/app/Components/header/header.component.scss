@@ -48,6 +48,12 @@
   color: #D000BB;
 }
 
+.nav-profile {
+  display: flex;
+  gap: 15px; /* Espacement entre les éléments .nav et .profile */
+  align-items: center;
+}
+
 .profile {
   background: #D000BB;
   padding: 8px 15px;

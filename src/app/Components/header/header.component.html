@@ -1,12 +1,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <div class="header">
+  <!-- Logo positionné à gauche -->
   <div class="logo" (click)="goToHome()">GameTracker</div>
-  <div class="nav">
-    <div (click)="goToAbout()">À propos de nous</div>
-    <div (click)="goToReviews()">Reviews</div>
-    <div (click)="goToDevMode()">Mode développeur</div>
-    <div (click)="goToGameList()">Liste des jeux</div>
+
+  <!-- Navigation et bouton Mon profil regroupés -->
+  <div class="nav-profile">
+    <div class="nav">
+      <div (click)="goToAbout()">À propos de nous</div>
+      <div (click)="goToDevMode()">Mode jour</div>
+      <div (click)="goToGameList()">Liste des jeux</div>
+    </div>
+    <div class="profile" (click)="goToEcranConnexion()">Mon profil</div>
   </div>
-  <div class="profile" (click)="goToEcranConnexion()">Mon profil</div>
 </div>
