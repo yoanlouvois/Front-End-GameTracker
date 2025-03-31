@@ -24,4 +24,7 @@ export class EcranProfilComponent {
   goToSocial() {
     this.router.navigate(['/Social']);
   }
+  goToNotifications(){
+    this.router.navigate(['/Notifications']);
+  }
 }

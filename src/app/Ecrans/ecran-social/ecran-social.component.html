@@ -15,7 +15,7 @@
         <span class="user-name">{{ friend.name }}</span>
       </div>
       <div class="user-actions">
-        <img *ngFor="let action of friend.actions" [src]="action" alt="Action Icon" />
+        <img *ngFor="let action of friend.actions" [src]="action" alt="Action Icon" (click)="goDiscussions()"/>
       </div>
     </section>
   </div>
