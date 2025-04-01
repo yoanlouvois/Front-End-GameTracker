@@ -1,0 +1,24 @@
+<div class="login-container">
+  <main class="main-content">
+    <h1 class="title">Ajouter un ami</h1>
+
+    <form class="login-form">
+      <div class="form-group">
+        <mat-form-field class="mat" appearance="outline">
+          <mat-label>Pseudo</mat-label>
+          <input matInput [(ngModel)]="ami" name="username" placeholder="Entrez le pseudo de votre ami">
+          <button *ngIf="ami" mat-icon-button aria-label="Clear" (click)="ami=''">
+            <mat-icon>✖</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+
+      <div class="button-group">
+        <button mat-raised-button color="primary" type="submit" (click)="goToSocial()">Ajouter</button>
+        <button mat-raised-button color="warn" type="button" (click)="goToSocial()">Annuler</button>
+
+      </div>
+    </form>
+  </main>
+</div>

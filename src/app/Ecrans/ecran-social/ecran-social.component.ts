@@ -35,4 +35,7 @@ export class EcranSocialComponent {
   goAjouterAmi() {
     this.router.navigate(['/AjouterAmi']);
   }
+  goDiscussions() {
+    this.router.navigate(['/Discussions']);
+  }
 }
