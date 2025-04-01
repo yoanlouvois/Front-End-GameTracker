@@ -6,8 +6,8 @@
       <div class="form-group">
         <mat-form-field class="mat" appearance="outline">
           <mat-label>Pseudo</mat-label>
-          <input matInput [(ngModel)]="username" name="username" placeholder="Entrez votre pseudo">
-          <button *ngIf="username" mat-icon-button aria-label="Clear" (click)="username=''">
+          <input matInput [(ngModel)]="authRequest.login" name="username" placeholder="Entrez votre pseudo">
+          <button *ngIf="authRequest.login" mat-icon-button aria-label="Clear" (click)="authRequest.login=''">
             <mat-icon>✖</mat-icon>
           </button>
         </mat-form-field>
@@ -16,15 +16,15 @@
       <div class="form-group">
         <mat-form-field class="mat" appearance="outline">
           <mat-label>Mot de passe</mat-label>
-          <input matInput type="password" [(ngModel)]="password" name="password" placeholder="Entrez votre mot de passe">
-          <button *ngIf="password" mat-icon-button aria-label="Clear" (click)="password=''">
+          <input matInput type="password" [(ngModel)]="authRequest.password" name="password" placeholder="Entrez votre mot de passe">
+          <button *ngIf="authRequest.password" mat-icon-button aria-label="Clear" (click)="authRequest.password=''">
             <mat-icon>✖</mat-icon>
           </button>
         </mat-form-field>
       </div>
 
       <div class="button-group">
-        <button mat-raised-button color="primary" type="submit" (click)="goToAccueil()">Valider</button>
+        <button mat-raised-button color="primary" type="submit" (click)="login()">Valider</button>
         <button mat-raised-button color="warn" type="button" (click)="goToAccueil()">Annuler</button>
       </div>
 

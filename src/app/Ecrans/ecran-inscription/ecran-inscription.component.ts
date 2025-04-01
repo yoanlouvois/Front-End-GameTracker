@@ -24,6 +24,7 @@ import {Router} from '@angular/router';
 })
 export class EcranInscriptionComponent {
   username: any;
+  email: any
   password: any;
   constructor(private router: Router) { }
 

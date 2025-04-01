@@ -1,2 +1,22 @@
-<p>HELOO</p>
-<p>ecran-accueil!</p>
+<div class="home-container">
+  <h1>Liste des utilisateurs</h1>
+
+  <!-- Indicateur de chargement -->
+  <div *ngIf="isLoading" class="loading">
+    Chargement en cours...
+  </div>
+
+  <!-- Liste des utilisateurs après chargement -->
+  <ul *ngIf="!isLoading && users.length > 0">
+    <li *ngFor="let user of users" class="user-item">
+      <h3>{{ user.username }}</h3>
+      <p>Email: {{ user.email }}</p>
+      <p>Status: {{ user.onlineStatus }}</p>
+    </li>
+  </ul>
+
+  <!-- Message si aucun utilisateur n'est présent -->
+  <div *ngIf="!isLoading && users.length === 0">
+    Aucun utilisateur trouvé.
+  </div>
+</div>
