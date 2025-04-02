@@ -49,20 +49,25 @@ export class EcranConnexionComponent {
   login() {
     this.errorMsg = [];
     this.authService.authenticate({
-      body:this.authRequest
+      body: this.authRequest,
     }).subscribe({
-      next:(res) => {
-        this.tokenService.token = res.accessToken as string;
+      next: (res) => {
+        console.log('Réponse de l\'API :', res); // Affiche la réponse complète
+        this.tokenService.token = res.accessToken as string; // Stocke le token
+        console.log('Token après stockage :', this.tokenService.token);
+
         this.router.navigate(['Home']);
       },
       error: (err) => {
         console.log(err);
-        if(err.error.validationErrors) {
-          this.errorMsg = err.error.validationErrors
-        }else{
+        if (err.error.validationErrors) {
+          this.errorMsg = err.error.validationErrors;
+        } else {
           this.errorMsg.push(err.error.errorMsg);
         }
       }
     });
   }
+
+
 }

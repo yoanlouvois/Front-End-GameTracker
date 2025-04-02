@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { TokenService } from '../../services/token/token.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router, private tokenService: TokenService) { }
 
   goToAbout() {
     this.router.navigate(['/Infos']);
@@ -27,13 +28,16 @@ export class HeaderComponent {
   }
 
   goToProfile() {
-    this.router.navigate(['/Profil']);
+    console.log('Utilisateur authentifié ?', this.tokenService.isAuthenticated());
+    if (this.tokenService.isAuthenticated()) {
+      this.router.navigate(['/Profil']);
+    } else {
+      this.router.navigate(['/Connexion']);
+    }
   }
 
   goToHome() {
     this.router.navigate(['/Home']);
   }
-  goToEcranConnexion() {
-    this.router.navigate(['/Connexion']);
-  }
+
 }

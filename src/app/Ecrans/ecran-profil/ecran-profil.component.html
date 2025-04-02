@@ -1,22 +1,34 @@
 <div class="profile-container">
-  <img class="profile-img" src="https://placehold.co/183x183" />
+  <!-- Section : Profil et actions -->
+  <div class="profile-info-section">
+    <img class="profile-img" src="https://placehold.co/183x183" />
+    <div class="profile-details">
+      <label class="player-name">Nom du joueur</label>
+      <button class="edit-profile" (click)="goToEditerProfil()">Éditer le profil</button>
+      <button class="social-btn" (click)="goToSocial()">Social</button>
+      <button class="logout-btn" (click)="logout()">Déconnexion</button>
+    </div>
+  </div>
 
-  <label class="player-name">Nom du joueur</label>
+  <!-- Section : Statistiques -->
+  <div class="stats-section">
+    <div class="stat">
+      <label class="stat-title">AMIS :</label>
+      <label class="stat-value">{{ friendsCount }}</label>
+    </div>
+    <div class="stat">
+      <label class="stat-title">HEURES DE JEU :</label>
+      <label class="stat-value">{{ hoursCount }}</label>
+    </div>
+    <div class="stat">
+      <label class="stat-title">RANG :</label>
+      <label class="stat-value">{{ rank }}</label>
+    </div>
+  </div>
 
-  <button class="edit-profile" (click)="goToEditerProfil()" >Editer le profil</button>
-
-  <label class="friends-label">AMIS :</label>
-  <label class="friends-count">{{ friendsCount }}</label>
-
-  <label class="hours-label">HEURES DE JEU :</label>
-  <label class="hours-count">{{ hoursCount }}</label>
-
-  <label class="rank-label">RANG :</label>
-  <label class="rank-count">{{ rank }}</label>
-
-  <img class="icon" src="https://placehold.co/35x35" />
-
-  <button class="icon-btn" (click)="goToNotifications()"> </button>
-
-  <button class="social-btn" (click)="goToSocial()">Social</button>
+  <!-- Section : Boutons supplémentaires -->
+  <div class="extra-buttons">
+    <img class="icon" src="https://placehold.co/35x35" />
+    <button class="icon-btn" (click)="goToNotifications()"> </button>
+  </div>
 </div>

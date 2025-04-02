@@ -9,7 +9,7 @@ import {EcranListeJeuxComponent} from './Ecrans/ecran-liste-jeux/ecran-liste-jeu
 import {EcranProfilComponent} from './Ecrans/ecran-profil/ecran-profil.component';
 import {EcranEditerProfilComponent} from './Ecrans/ecran-editer-profil/ecran-editer-profil.component';
 import {EcranSocialComponent} from './Ecrans/ecran-social/ecran-social.component';
-import {EcranAjouterAmiComponent} from './Ecrans/ecran-ajouter-ami/ecran-ajouter-ami.component';
+//import {EcranAjouterAmiComponent} from './Ecrans/ecran-ajouter-ami/ecran-ajouter-ami.component';
 import {EcranNotificationsComponent} from './Ecrans/ecran-notifications/ecran-notifications.component';
 import {EcranDiscussionsComponent} from './Ecrans/ecran-discussions/ecran-discussions.component';
 
@@ -25,7 +25,7 @@ export const routes: Routes = [
   { path: 'Inscription', component: EcranInscriptionComponent},
   { path: 'Jeu', component: EcranJeuComponent},
   { path: 'ListeJeux', component: EcranListeJeuxComponent},
-  { path: 'AjouterAmi', component: EcranAjouterAmiComponent},
+  //{ path: 'AjouterAmi', component: EcranAjouterAmiComponent},
   { path: 'Notifications', component: EcranNotificationsComponent},
   { path: 'Discussions', component: EcranDiscussionsComponent},
 ];

@@ -6,7 +6,7 @@
       <div class="form-group">
         <mat-form-field class="mat" appearance="outline">
           <mat-label>Pseudo</mat-label>
-          <input matInput [(ngModel)]="username" name="username" placeholder="Entrez votre pseudo">
+          <input matInput [(ngModel)]="username" name="username" placeholder="Entrez votre pseudo" />
           <button *ngIf="username" mat-icon-button aria-label="Clear" (click)="username=''">
             <mat-icon>✖</mat-icon>
           </button>
@@ -16,7 +16,7 @@
       <div class="form-group">
         <mat-form-field class="mat" appearance="outline">
           <mat-label>Email</mat-label>
-          <input matInput [(ngModel)]="email" name="email" placeholder="Email">
+          <input matInput [(ngModel)]="email" name="email" placeholder="Email" />
           <button *ngIf="email" mat-icon-button aria-label="Clear" (click)="email=''">
             <mat-icon>✖</mat-icon>
           </button>
@@ -26,7 +26,7 @@
       <div class="form-group">
         <mat-form-field class="mat" appearance="outline">
           <mat-label>Mot de passe</mat-label>
-          <input matInput type="password" [(ngModel)]="password" name="password" placeholder="Entrez votre mot de passe">
+          <input matInput type="password" [(ngModel)]="password" name="password" placeholder="Entrez votre mot de passe" />
           <button *ngIf="password" mat-icon-button aria-label="Clear" (click)="password=''">
             <mat-icon>✖</mat-icon>
           </button>
@@ -34,14 +34,13 @@
       </div>
 
       <div class="button-group">
-        <button mat-raised-button color="primary" type="submit" (click)="goToAccueil()">Valider</button>
+        <button mat-raised-button color="primary" type="submit">Valider</button>
         <button mat-raised-button color="warn" type="button" (click)="goToAccueil()">Annuler</button>
       </div>
 
       <div class="button-connect">
-        <div class="btn-change" (click)="goToConnexion()">Déja un compte ?</div>
+        <div class="btn-change" (click)="goToConnexion()">Déjà un compte ?</div>
       </div>
-
     </form>
   </main>
 </div>
