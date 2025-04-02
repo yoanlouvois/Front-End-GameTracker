@@ -9,9 +9,15 @@
 
     <!-- Conteneur des boutons -->
     <div class="profile-details">
-      <button class="edit-profile" (click)="goToEditerProfil()">Éditer le profil</button>
-      <button class="social-btn" (click)="goToSocial()">Social</button>
-      <button class="log-out" (click)="logout()">Deconnexion</button>
+      <button class="edit-profile" (click)="goToEditerProfil()">
+        <i class="fa-solid fa-user-pen"></i>&nbsp; Éditer le profil
+      </button>
+      <button class="social-btn" (click)="goToSocial()">
+        <i class="fa-solid fa-users"></i>&nbsp; Social
+      </button>
+      <button class="log-out" (click)="logout()">
+        <i class="fa-solid fa-right-from-bracket"></i>&nbsp; Déconnexion
+      </button>
     </div>
   </div>
 
