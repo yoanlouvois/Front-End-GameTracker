@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FriendshipControllerService } from '../../services/services';  // Service où sendFriendRequest est défini
+import { FriendshipControllerService, UserControllerService } from '../../services/services';
 import { MatIcon } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
-import { MatFormField, MatInput, MatLabel } from '@angular/material/input'; // Import du service AuthService
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { TokenService } from '../../services/token/token.service';
 import { TokenDecodeService } from '../../services/token/token-decode.service';
@@ -25,48 +25,70 @@ import { MatButton, MatIconButton } from '@angular/material/button';
   styleUrls: ['./ecran-ajouter-ami.component.scss']
 })
 export class EcranAjouterAmiComponent implements OnInit {
-  ami: string = ""; // ID de l'ami que l'utilisateur veut ajouter
+  ami: string = ""; // Pseudo de l'ami entré par l'utilisateur
   private userId: number | null = null; // ID de l'utilisateur connecté
 
   constructor(
     private router: Router,
-    private friendshipService: FriendshipControllerService, // Le service où la méthode sendFriendRequest est définie
+    private friendshipService: FriendshipControllerService,
+    private userControllerService: UserControllerService, // Service pour récupérer un utilisateur par son pseudo
     private tokenService: TokenService,
     private tokenDecodeService: TokenDecodeService
   ) {}
 
   ngOnInit(): void {
-    // Décodage du token pour récupérer l'ID utilisateur
+    // Récupérer l'ID utilisateur depuis le token
     this.userId = this.tokenDecodeService.getUserId();
     console.log('ID utilisateur extrait du token :', this.userId);
   }
 
   // Méthode pour envoyer la demande d'amitié
   envoyerDemandeAmi() {
-    // Convertir l'ID de l'ami en entier
-    const amiId = parseInt(this.ami, 10); // Convertir l'ID ami en entier
-
-    // Vérifier si l'ID utilisateur et l'ID de l'ami sont valides
-    if (this.userId && !isNaN(amiId) && amiId > 0) {
-      const params = {
-        senderId: this.userId,  // ID de l'utilisateur connecté
-        receiverId: amiId       // ID de l'ami converti en entier
-      };
-
-      // Appeler la méthode sendFriendRequest pour envoyer la demande d'amitié
-      this.friendshipService.sendFriendRequest(params).subscribe({
-        next: () => {
-          alert(`Demande d'amitié envoyée à l'utilisateur ${amiId}!`);
-          this.router.navigate(['/Social']); // Rediriger vers la page Social après l'envoi
-        },
-        error: (err) => {
-          console.error('Erreur lors de l’envoi de la demande :', err);
-          alert('Erreur lors de l’envoi de la demande d\'amitié.');
-        }
-      });
-    } else {
-      alert(this.userId);
+    if (!this.ami.trim()) {
+      alert("Veuillez entrer un pseudo valide.");
+      return;
     }
+
+    if (!this.userId) {
+      alert("Impossible de récupérer votre identifiant utilisateur.");
+      return;
+    }
+
+    // Étape 1 : Convertir le pseudo en ID utilisateur
+    this.userControllerService.getUserByUsername({ username: this.ami }).subscribe({
+      next: (user) => {
+        if (user && user.id) {
+          const amiId = user.id; // Récupérer l'ID de l'ami depuis la réponse API
+
+          if (this.userId === null) {
+            alert("Votre identifiant utilisateur est introuvable.");
+            return;
+          }
+
+          const params = {
+            senderId: this.userId as number,  // ✅ On est sûr que ce n'est pas null
+            receiverId: amiId
+          };
+
+          this.friendshipService.sendFriendRequest(params).subscribe({
+            next: () => {
+              alert(`Demande d'amitié envoyée à ${this.ami} (ID: ${amiId})!`);
+              this.router.navigate(['/Social']); // Rediriger après l'envoi
+            },
+            error: (err) => {
+              console.error('Erreur lors de l’envoi de la demande :', err);
+              alert("Erreur lors de l’envoi de la demande d'amitié.");
+            }
+          });
+        } else {
+          alert(`Utilisateur "${this.ami}" introuvable.`);
+        }
+      },
+      error: (err) => {
+        console.error(`Erreur lors de la récupération de l'utilisateur :`, err);
+        alert(`Erreur lors de la recherche de l'utilisateur "${this.ami}".`);
+      }
+    });
   }
 
   // Méthode pour annuler et rediriger vers la page Social

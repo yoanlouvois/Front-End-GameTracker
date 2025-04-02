@@ -1,15 +1,31 @@
 <div class="notifications-container">
-  <div class="notifications-title">Notifications</div>
+  <!-- Titre des notifications -->
+  <div class="notifications-title">
+    Notifications
+  </div>
+
+  <!-- Séparateur -->
   <div class="notifications-divider">
     <div class="divider-line"></div>
   </div>
-</div>
-<div class="notification-container">
-  <img src="assets/icon-info.svg" alt="Info Icon" width="20" />
-  <div class="content">
-    <strong>Demande d’ajout</strong>
-    <p>de la part {{username}}</p>
-  </div>
-  <button class="accept-button">Accepter</button>
-</div>
 
+  <!-- Si aucune notification -->
+  <div *ngIf="pendingRequests.length === 0" class="no-notifications">
+    Aucune demande d'amitié en attente.
+  </div>
+
+  <!-- Affichage des demandes -->
+  <div *ngFor="let request of pendingRequests" class="notification">
+
+
+    <div class="content">
+      <strong>Demande d’ajout</strong>
+      <p>de la part de <b>{{ request.username }}</b></p>
+    </div>
+
+    <div class="notification-actions">
+      <button class="accept-button">Accepter</button>
+      <button class="decline-button">Refuser</button>
+    </div>
+  </div>
+</div>

@@ -5,8 +5,6 @@ import { TokenService } from './token.service'; // Importation du service TokenS
   providedIn: 'root', // Fournisseur global du service
 })
 export class TokenDecodeService {
-
-
   // Injection du TokenService dans le constructeur
   constructor(private tokenService: TokenService) {}
 
@@ -15,9 +13,7 @@ export class TokenDecodeService {
    * @param token Le token JWT à décoder.
    * @returns Le contenu du payload sous forme d'objet ou null en cas d'erreur.
    */
-
   private decodeToken(token: string): any {
-
     if (!token) {
       console.error('Token non fourni ou vide');
       return null;
@@ -69,7 +65,7 @@ export class TokenDecodeService {
    * @returns L'ID utilisateur ou null si non trouvé.
    */
   getUserId(): number | null {
-    return this.getClaim('username'); // Adaptez 'userId' à la manière dont il est défini côté backend
+    return this.getClaim('userId'); // Adaptez 'userId' à la manière dont il est défini côté backend
   }
 
   /**
