@@ -1,43 +1,123 @@
+/* Conteneur principal des notifications */
 .notifications-container {
   width: 100%;
   height: 100%;
   position: relative;
-  overflow: hidden;
+  overflow-y: auto; /* Permet le défilement si nécessaire */
+  padding: 20px;
 }
 
+/* Titre des notifications */
 .notifications-title {
-  width: 396px;
-  height: 71px;
-  left: 55px;
-  top: 19px;
-  position: absolute;
-  justify-content: center;
   display: flex;
-  flex-direction: column;
-  color: white;
-  font-size: 32px;
-  font-family: Inter, sans-serif;
-  font-weight: 400;
-  line-height: 41.60px;
-  word-wrap: break-word;
-}
-
-.notifications-divider {
-  width: 1384px;
-  height: 37px;
-  padding: 8px 16px;
-  left: 30px;
-  top: 73px;
-  position: absolute;
-  border-radius: 8px;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  display: inline-flex;
+  font-size: 32px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: #D000BB;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ddd; /* Ligne de séparation */
 }
 
-.divider-line {
-  align-self: stretch;
-  height: 1px;
-  background: var(--Border-Default-Default, #D9D9D9);
+/* Diviseur des notifications */
+.notifications-divider {
+  margin: 20px 0;
+  border-top: 1px solid #ddd;
+}
+
+/* Box des notifications */
+.notification-container {
+  margin: 10px 0;
+  max-width: 100%; /* S'adapte à l'écran */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Box d'une notification individuelle */
+.notification {
+  display: flex;
+  align-items: center;
+  background-color: #221E55; /* Blanc pour les box */
+  border: 1px solid #dcdfe6; /* Bordure gris clair */
+  padding: 15px;
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Ombre légère */
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.notification:hover {
+  transform: translateY(-5px); /* Effet au survol */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Ombre plus marquée */
+}
+
+/* Icône de la notification */
+.notification .icon img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+/* Contenu de la notification */
+.notification .content {
+  flex-grow: 1;
+}
+
+.notification .content strong {
+  font-size: 16px;
+  color: #B3B3B3;
+}
+
+.notification .content p {
+  color: #B3B3B3;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+/* Bouton "Accepter" */
+.accept-button {
+  background-color: #3a3c46;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+}
+
+.accept-button:hover {
+  background-color: #0056b3; /* Couleur plus foncée au survol */
+}
+
+/* Bouton "Refuser" */
+.decline-button {
+  background-color: #3a3c46;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.decline-button:hover {
+  background-color: #0056b3; /* Couleur plus foncée au survol */
+}
+
+/* Lorsque la notification n'a pas de notifications */
+.no-notifications {
+  text-align: center;
+  font-size: 18px;
+  color: #888;
+  padding: 20px;
+  background-color: #fafafa; /* Fond légèrement coloré */
+  border-radius: 8px;
+  margin-top: 20px;
 }

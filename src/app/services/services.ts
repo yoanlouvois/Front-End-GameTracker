@@ -25,3 +25,6 @@ export { PhotosService } from './services/photos.service';
 export { GameCommentLikeControllerService } from './services/game-comment-like-controller.service';
 export { FavoriteGameControllerService } from './services/favorite-game-controller.service';
 export { AuthenticationControllerService } from './services/authentication-controller.service';
+
+export class AuthService {
+}
