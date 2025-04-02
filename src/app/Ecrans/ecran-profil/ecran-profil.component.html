@@ -1,4 +1,5 @@
 <div class="profile-container">
+
   <!-- Section : Profil et actions -->
   <div class="profile-info-section">
     <img class="profile-img" src="https://placehold.co/183x183" />
@@ -26,9 +27,15 @@
     </div>
   </div>
 
-  <!-- Section : Boutons supplémentaires -->
-  <div class="extra-buttons">
-    <img class="icon" src="https://placehold.co/35x35" />
-    <button class="icon-btn" (click)="goToNotifications()"> </button>
-  </div>
+  <label class="hours-label">HEURES DE JEU :</label>
+  <label class="hours-count">{{ hoursCount }}</label>
+
+  <label class="rank-label">RANG :</label>
+  <label class="rank-count">{{ rank }}</label>
+
+  <img class="icon" src="https://placehold.co/35x35" />
+
+  <button class="icon-btn" (click)="goToNotifications()"> </button>
+
+  <button class="social-btn" (click)="goToSocial()">Social</button>
 </div>

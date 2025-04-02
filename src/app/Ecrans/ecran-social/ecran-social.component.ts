@@ -13,29 +13,34 @@ export class EcranSocialComponent {
     {
       name: 'LionelPessi34',
       avatar: 'https://placehold.co/61x61',
-      actions: ['https://placehold.co/55x55', 'https://placehold.co/51x55', 'https://placehold.co/55x55']
+      discussion: 'https://placehold.co/55x55',
+      supprimer: 'https://placehold.co/55x55',
     },
     {
       name: 'Gautier3',
       avatar: 'https://placehold.co/61x61',
-      actions: ['https://placehold.co/55x55', 'https://placehold.co/51x55', 'https://placehold.co/55x55']
+      discussion: 'https://placehold.co/55x55',
+      supprimer: 'https://placehold.co/55x55',
     },
     {
       name: 'Momo28',
       avatar: 'https://placehold.co/61x61',
-      actions: ['https://placehold.co/55x55', 'https://placehold.co/51x55', 'https://placehold.co/55x55']
+      discussion: 'https://placehold.co/55x55',
+      supprimer: 'https://placehold.co/55x55',
     },
     {
       name: 'Bakame1',
       avatar: 'https://placehold.co/61x61',
-      actions: ['https://placehold.co/55x55', 'https://placehold.co/51x55', 'https://placehold.co/55x55']
+      discussion: 'https://placehold.co/55x55',
+      supprimer: 'https://placehold.co/55x55',
     }
   ];
   constructor(private router: Router) { }
   goAjouterAmi() {
     this.router.navigate(['/AjouterAmi']);
   }
-  goDiscussions() {
-    this.router.navigate(['/Discussions']);
+  goDiscussions(friendName: string) {
+    this.router.navigate(['/Discussions', friendName]);
   }
+
 }

@@ -14,8 +14,11 @@
       <div class="user-info">
         <span class="user-name">{{ friend.name }}</span>
       </div>
-      <div class="user-actions">
-        <img *ngFor="let action of friend.actions" [src]="action" alt="Action Icon" (click)="goDiscussions()"/>
+      <div class="user-discussion">
+        <img [src]="friend.discussion" alt="Action Icon"(click)="goDiscussions(friend.name)" />
+      </div>
+      <div class="user-supprimer">
+        <img [src]="friend.supprimer" alt="Action Icon" />
       </div>
     </section>
   </div>

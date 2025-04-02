@@ -12,6 +12,7 @@ import {EcranSocialComponent} from './Ecrans/ecran-social/ecran-social.component
 //import {EcranAjouterAmiComponent} from './Ecrans/ecran-ajouter-ami/ecran-ajouter-ami.component';
 import {EcranNotificationsComponent} from './Ecrans/ecran-notifications/ecran-notifications.component';
 import {EcranDiscussionsComponent} from './Ecrans/ecran-discussions/ecran-discussions.component';
+import {EcranAjouterAmiComponent} from './Ecrans/ecran-ajouter-ami/ecran-ajouter-ami.component';
 
 
 export const routes: Routes = [
@@ -25,9 +26,11 @@ export const routes: Routes = [
   { path: 'Inscription', component: EcranInscriptionComponent},
   { path: 'Jeu', component: EcranJeuComponent},
   { path: 'ListeJeux', component: EcranListeJeuxComponent},
-  //{ path: 'AjouterAmi', component: EcranAjouterAmiComponent},
+  { path: 'AjouterAmi', component: EcranAjouterAmiComponent},
   { path: 'Notifications', component: EcranNotificationsComponent},
   { path: 'Discussions', component: EcranDiscussionsComponent},
+  { path: 'Discussions/:friendName', component: EcranDiscussionsComponent }
+
 ];
 
 @NgModule({

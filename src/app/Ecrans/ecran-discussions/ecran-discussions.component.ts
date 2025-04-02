@@ -1,6 +1,20 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+
+
+
+// @ts-ignore
+import { TokenService } from '../../services/token/token.service';
+
+
+interface Message {
+  text: string;
+  sender: 'left' | 'right';
+}
 
 @Component({
   selector: 'app-ecran-discussions',
@@ -11,66 +25,84 @@ import {Router} from '@angular/router';
 export class EcranDiscussionsComponent implements OnInit {
   @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
 
-  messages: { text: string; sender: 'left' | 'right' }[] = [];
-
+  messages: Message[] = [];
   friend = {
     name: 'LionelPessi35',
-    messages: [] as { text: string; sender: 'left' | 'right' }[]
+    id: 'user2', // Remplace par l'ID réel du deuxième utilisateur
+    messages: [] as Message[]
   };
+  private userId = 'user1'; // Remplace par l'ID réel de l'utilisateur
+  private apiUrl = 'http://localhost:3000/gametracker/v1/message';
 
-  // Méthode pour envoyer un message
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private tokenService: TokenService,
+    private route: ActivatedRoute  // Ajout pour récupérer les paramètres de l'URL
+  ) { }
+
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      const friendName = params.get('friendName');
+      if (friendName) {
+        this.friend.name = friendName; // Mise à jour du nom de l'ami avec qui on discute
+      }
+    });
+
+    this.loadMessages();
+  }
+
+  private getAuthHeaders() {
+    return {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.tokenService.token}`
+      })
+    };
+  }
+
+  // Récupérer la conversation depuis l'API
+  private loadMessages() {
+    this.getConversation().subscribe(conversation => {
+      this.messages = conversation;
+      this.friend.messages = [...this.messages];
+      this.scrollToBottom();
+    });
+  }
+
+  getConversation(): Observable<Message[]> {
+    return this.http.get<Message[]>(`${this.apiUrl}/conversation/${this.userId}/${this.friend.id}`, this.getAuthHeaders());
+  }
+
+  // Envoyer un message
   sendMessage(input: HTMLInputElement) {
     const messageText = input.value.trim();
     if (messageText === '') return;
 
-    // Déterminer si le message est envoyé par l'utilisateur
-    const isUserMessage = messageText.startsWith("Moi:");
-    const sender: 'left' | 'right' = isUserMessage ? 'right' : 'left'; // On déclare sender avec les types corrects
+    const message: Message = { text: messageText, sender: 'right' };
 
-    // Créer le message
-    const message = { text: messageText.replace("Moi:", ""), sender };
-
-    // Ajouter le message dans la liste des messages de l'utilisateur
+    // Ajouter le message localement pour affichage instantané
     this.messages.push(message);
-
-    // Ajouter aussi le message dans les messages de l'ami
     this.friend.messages.push(message);
-
-    // Sauvegarder les messages dans localStorage
-    this.saveMessages();
-
-    // Vider l'input
-    input.value = "";
-
-    // Faire défiler vers le bas après envoi du message
     this.scrollToBottom();
-  }
 
-  // Méthode pour sauvegarder les messages dans localStorage
-  private saveMessages() {
-    localStorage.setItem('messages', JSON.stringify(this.messages));
-  }
+    // Envoyer le message à l'API
+    this.http.post<Message>(`${this.apiUrl}/send`, {
+      senderId: this.userId,
+      receiverId: this.friend.id,
+      text: messageText
+    }, this.getAuthHeaders()).subscribe();
 
-  // Méthode pour récupérer les messages depuis localStorage
-  private loadMessages() {
-    const storedMessages = localStorage.getItem('messages');
-    if (storedMessages) {
-      this.messages = JSON.parse(storedMessages);
-      this.friend.messages = [...this.messages];  // Copier les messages dans friend.messages
-    }
+    input.value = "";
   }
 
   // Scroll automatique vers le bas
   private scrollToBottom() {
-    const container = this.messagesContainer.nativeElement;
-    container.scrollTop = container.scrollHeight;
+    setTimeout(() => {
+      const container = this.messagesContainer.nativeElement;
+      container.scrollTop = container.scrollHeight;
+    }, 100);
   }
 
-  // Lors du chargement du composant, récupérer les messages
-  ngOnInit() {
-    this.loadMessages();
-  }
-  constructor(private router: Router) { }
   goToSocial() {
     this.router.navigate(['/Social']);
   }

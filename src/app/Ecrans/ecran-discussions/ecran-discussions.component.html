@@ -4,7 +4,7 @@
       <img src="https://placehold.co/61x61" alt="Profil">
     </div>
     <div class="username">{{ friend.name }}</div>
-    <button class="back-button">Retour</button> <!-- Le bouton retour -->
+    <button (click)="goToSocial()" class="back-button">Retour</button>
   </div>
 
   <div class="chat-messages" #messagesContainer>
