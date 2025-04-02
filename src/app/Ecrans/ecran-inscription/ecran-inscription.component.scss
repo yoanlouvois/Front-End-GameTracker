@@ -1,58 +1,62 @@
 /* Style du cadre bleu en haut */
-
 .header {
-  padding: 0; /* Vérifiez que les paddings sont strictement nécessaires */
-  margin: 0; /* Supprime les marges externes */
+  background-color: #221E55; /* Fond bleu pour le cadre */
+  display: flex; /* Utilise Flexbox pour disposer les éléments horizontalement */
+  justify-content: space-between; /* Espace égal entre les éléments */
+  align-items: center; /* Centre verticalement les éléments */
+  padding: 0.75rem 1.5rem; /* Réduction de l'espacement interne */
+  color: white; /* Texte en blanc pour les éléments du header */
 }
 
 .logo {
   color: white; /* Couleur blanche pour le logo */
-  font-size: 1.8rem; /* Taille du texte du logo */
+  font-size: 1.5rem; /* Taille du texte du logo réduite */
   font-weight: bold; /* Met le logo en gras */
 }
 
 .nav-link {
   color: white; /* Lien en blanc */
-  font-size: 1rem; /* Taille du texte du lien */
+  font-size: 0.9rem; /* Taille du texte du lien réduite */
   text-decoration: none; /* Supprime le soulignement du lien */
-  padding: 0.5rem; /* Ajoute un peu d'espace autour du lien */
+  padding: 0.3rem; /* Espace autour du lien réduit */
   border-radius: 4px; /* Arrondi les bords du lien */
 }
 
 .nav-link:hover {
   background-color: rgba(255, 255, 255, 0.2); /* Lien devient plus visible au survol */
 }
+
 :host {
   display: block; /* Définit l'élément hôte comme un bloc pour prendre toute la largeur disponible */
   min-height: 100vh; /* Définit une hauteur minimale de 100% de la hauteur de la fenêtre */
 }
+
+
 /* Style des champs de saisie */
 .mat {
   width: 100%;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem; /* Espace entre les champs réduit */
   color: #4c67ec;
   font-weight: bold; /* Met le texte en gras */
 }
 
 .login-container {
-  background-color: #170B2F;
-  min-height: 100vh;
-  margin: 0; /* Supprime les marges supplémentaires */
-  padding: 0; /* Supprime les paddings supplémentaires */
-  display: flex;
-  flex-direction: column;
+  background-color: #170B2F; /* Fond sombre pour le conteneur de connexion */
+  min-height: 100vh; /* Assure que le conteneur prend toute la hauteur de la fenêtre */
+  display: flex; /* Utilise Flexbox pour disposer les éléments en colonne */
+  flex-direction: column; /* Organise les éléments dans une colonne */
 }
 
 .header {
   display: flex; /* Utilise Flexbox pour disposer les éléments horizontalement */
   justify-content: space-between; /* Espace égal entre les éléments */
   align-items: center; /* Centre verticalement les éléments */
-  padding: 1.5rem 3rem; /* Espacement interne autour du contenu */
+  padding: 1rem 2rem; /* Espacement interne réduit */
 }
 
 .logo {
   color: #d000bb; /* Couleur rose pour le logo */
-  font-size: 1.8rem; /* Taille du texte du logo */
+  font-size: 1.5rem; /* Taille du texte du logo réduite */
   font-weight: bold; /* Met le logo en gras */
 }
 
@@ -61,31 +65,29 @@
   display: flex; /* Utilise Flexbox pour disposer les éléments */
   flex-direction: column; /* Dispose les éléments en colonne */
   align-items: center; /* Centre horizontalement les éléments */
-  margin: 30px;
+  margin: 15px; /* Marge réduite */
 }
 
 .title {
   color: #d000bb; /* Couleur rose pour le titre */
-  font-size: 1.5rem; /* Taille du texte du titre */
-  margin-bottom: 2rem; /* Ajoute un espacement sous le titre */
+  font-size: 1.3rem; /* Taille du texte du titre réduite */
+  margin-bottom: 1rem; /* Espacement sous le titre réduit */
   text-align: center; /* Centre le texte du titre */
 }
 
 .login-form {
-  gap: 0.8rem;
   width: 100%; /* Le formulaire prend toute la largeur disponible */
-  max-width: 300px;; /* Définit une largeur maximale pour le formulaire */
+  max-width: 400px; /* Définit une largeur maximale pour le formulaire */
   display: flex; /* Utilise Flexbox pour organiser les éléments */
   flex-direction: column; /* Organise les éléments en colonne */
-  padding: 0.5rem;
-  padding-bottom: 0.5rem;
+  gap: 0.3rem; /* Espacement entre les éléments réduit */
 }
 
 button[mat-icon-button] mat-icon {
-  padding: 0.5rem 1rem;
-  font-size: 1.2rem; /* Taille de l'icône de la croix */
+  font-size: 1rem; /* Taille de l'icône de la croix réduite */
   color: #d000bb; /* Couleur rose pour l'icône */
 }
+
 input [mat-icon-button] {
   color: white; /* Définit la couleur du texte sur l'input */
 }
@@ -94,92 +96,92 @@ button[mat-icon-button]:hover mat-icon {
   color: #b30080;  /* Couleur rose plus foncée lors du survol de la croix */
 }
 
-
 /* Style du bouton "Valider" */
 .button-group button {
-
   background-color: #d000bb; /* Couleur de fond du bouton (rose) */
   border-radius: 2rem; /* Bord arrondi pour le bouton */
-
-  font-size: 1rem; /* Taille du texte du bouton */
+  font-size: 0.9rem; /* Taille du texte du bouton réduite */
   color: white; /* Texte blanc pour le bouton */
   width: 100%; /* Le bouton prend toute la largeur disponible */
   cursor: pointer; /* Modifie le curseur pour un bouton cliquable */
   transition: background-color 0.2s ease; /* Effet de transition pour la couleur de fond */
 }
+
 .button-group button:hover {
   background-color: #b30080;
 }
 
-
-
 input[matInput] {
-
-  padding: 0.75rem 1rem; /* Espacement interne dans l'input */
-  width: 80%; /* Allonge la largeur du champ à 100% de son parent */
-  /*color: white !important; /* Forcer la couleur blanche */
-
+  padding: 0.5rem 0.75rem; /* Espacement interne dans l'input réduit */
+  width: 80%; /* Allonge la largeur du champ à 80% de son parent */
 }
 
-
-/* Croix positionnée absolument à l'intérieur de l'input */
-button[mat-icon-button] {
-  position: absolute; /* Positionne la croix à l'intérieur de l'input */
-  right: 10px; /* Positionne la croix à droite */
-  top: 25%; /* Centre la croix verticalement */
-
+/* Ajoutez ces styles pour corriger l'affichage des icônes */
+::ng-deep .mat-icon {
+  font-family: 'Material Icons';
+  font-size: 18px;
+  height: 18px;
+  width: 18px;
+  line-height: 18px;
 }
 
 .button-group {
   display: flex;
-  gap: 10px; /* Ajoute un espace de 10px entre les boutons */
+  gap: 8px; /* Espace entre les boutons réduit */
   justify-content: center; /* Centre les boutons horizontalement */
+  margin-top: 0.5rem; /* Espace au-dessus du groupe de boutons */
 }
 
 .btn {
-  min-width: 120px; /* Permet d'avoir des boutons de taille cohérente */
+  min-width: 100px; /* Largeur minimale des boutons réduite */
 }
+
 /* Style du formulaire de connexion */
 .login-form {
   width: 100%; /* Le formulaire prend toute la largeur disponible */
-  max-width: 400px; /* Définit une largeur maximale pour le formulaire */
+  max-width: 380px; /* Largeur maximale réduite */
   display: flex; /* Utilise Flexbox pour organiser les éléments */
   flex-direction: column; /* Organise les éléments en colonne */
-  gap: 0.5rem; /* Ajoute un espacement entre les éléments */
-  padding: 1.5rem; /* Ajoute un espacement interne autour du formulaire */
+  gap: 0.3rem; /* Espacement entre les éléments réduit */
+  padding: 1rem; /* Espacement interne réduit */
   border: 2px solid #d000bb; /* Contour rose autour du formulaire */
   border-radius: 8px; /* Bord arrondi pour le formulaire */
   transition: box-shadow 0.3s ease; /* Effet de transition pour l'ombre */
-  padding-bottom: 0.5rem;
 }
 
 /* Effet de survol du formulaire */
 .login-form:hover {
-  box-shadow: 0px 0px 10px rgba(208, 0, 187, 0.6); /* Ombre rose au survol */
+  box-shadow: 0px 0px 8px rgba(208, 0, 187, 0.6); /* Ombre rose au survol, légèrement réduite */
 }
 
-/* Style des champs de saisie */
-.mat {
-  width: 100%;
-  margin-bottom: 0.01rem; /* Espace entre les champs */
-  color: #4c67ec;
-  font-weight: bold; /* Met le texte en gras */
-}
-
-/* Style pour le conteneur contenant le bouton Se Connecter */
+/* Style spécifique au lien "Créer un compte" */
 .button-connect {
   text-align: center; /* Centre le bouton horizontalement */
+  margin-top: 0.5rem; /* Espace au-dessus du bouton */
 }
 
-/* Style spécifique au bouton Se Connecter */
+/* Style pour le bouton secondaire "Créer un compte" */
 .btn-change {
-  margin-top: 0.15rem;
-  width: 100%; /* Le bouton prend toute la largeur du formulaire */
-  padding: 0.75rem 1rem; /* Ajoute des marges internes */
-  color:#d000bb;
-  cursor: pointer;
+  color: #d000bb; /* Couleur du texte rose */
+  font-size: 0.9rem; /* Taille du texte réduite */
+  background: none; /* Pas de couleur de fond */
+  border: none; /* Supprime la bordure par défaut */
+  cursor: pointer; /* Montre que le bouton est cliquable */
+  padding: 0.3rem; /* Espacement interne réduit */
 }
 
-.btn-change div:hover {
-  color: #c753c3;
+.btn-change:hover {
+  color: #c753c3; /* Couleur rose plus clair lors du survol */
+}
+
+/* Ajustez le style des boutons d'effacement pour qu'ils s'intègrent correctement */
+::ng-deep .mat-form-field-suffix {
+  align-self: center;
+}
+
+/* Assurez-vous que les boutons matSuffix sont correctement dimensionnés */
+::ng-deep button[matSuffix] {
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
 }

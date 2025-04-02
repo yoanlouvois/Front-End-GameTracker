@@ -1,24 +1,24 @@
 <div class="login-container">
   <main class="main-content">
-    <h1 class="title">Inscription : Entrez pseudo et mot de passe</h1>
+    <h1 class="title">Inscription</h1>
 
     <form class="login-form">
       <div class="form-group">
         <mat-form-field class="mat" appearance="outline">
-          <mat-label>Pseudo</mat-label>
-          <input matInput [(ngModel)]="username" name="username" placeholder="Entrez votre pseudo" />
-          <button *ngIf="username" mat-icon-button aria-label="Clear" (click)="username=''">
-            <mat-icon>✖</mat-icon>
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="email" name="email" placeholder="Entrez votre email">
+          <button *ngIf="email" mat-icon-button matSuffix aria-label="Clear" (click)="email=''">
+            <mat-icon>close</mat-icon>
           </button>
         </mat-form-field>
       </div>
 
       <div class="form-group">
         <mat-form-field class="mat" appearance="outline">
-          <mat-label>Email</mat-label>
-          <input matInput [(ngModel)]="email" name="email" placeholder="Email" />
-          <button *ngIf="email" mat-icon-button aria-label="Clear" (click)="email=''">
-            <mat-icon>✖</mat-icon>
+          <mat-label>Pseudo</mat-label>
+          <input matInput [(ngModel)]="username" name="username" placeholder="Choisissez votre pseudo">
+          <button *ngIf="username" mat-icon-button matSuffix aria-label="Clear" (click)="username=''">
+            <mat-icon>close</mat-icon>
           </button>
         </mat-form-field>
       </div>
@@ -26,20 +26,21 @@
       <div class="form-group">
         <mat-form-field class="mat" appearance="outline">
           <mat-label>Mot de passe</mat-label>
-          <input matInput type="password" [(ngModel)]="password" name="password" placeholder="Entrez votre mot de passe" />
-          <button *ngIf="password" mat-icon-button aria-label="Clear" (click)="password=''">
-            <mat-icon>✖</mat-icon>
+          <input matInput type="password" [(ngModel)]="password" name="password" placeholder="Choisissez votre mot de passe">
+          <button *ngIf="password" mat-icon-button matSuffix aria-label="Clear" (click)="password=''">
+            <mat-icon>close</mat-icon>
           </button>
         </mat-form-field>
       </div>
 
       <div class="button-group">
-        <button mat-raised-button color="primary" type="submit">Valider</button>
+        <button mat-raised-button color="primary" type="button" (click)="createUser()">S'inscrire</button>
         <button mat-raised-button color="warn" type="button" (click)="goToAccueil()">Annuler</button>
       </div>
 
+      <!-- Bouton "Se connecter" -->
       <div class="button-connect">
-        <div class="btn-change" (click)="goToConnexion()">Déjà un compte ?</div>
+        <button class="btn-change" type="button" (click)="goToConnexion()">Vous avez déjà un compte ?</button>
       </div>
     </form>
   </main>
