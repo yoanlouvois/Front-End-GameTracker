@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatButton} from '@angular/material/button';
 import {Router} from '@angular/router';
 import {TokenService} from '../../services/token/token.service';
+import { TokenDecodeService } from '../../services/token/token-decode.service';
 
 @Component({
   selector: 'app-ecran-profil',
@@ -11,11 +12,14 @@ import {TokenService} from '../../services/token/token.service';
   templateUrl: './ecran-profil.component.html',
   styleUrl: './ecran-profil.component.scss'
 })
-export class EcranProfilComponent {
+export class EcranProfilComponent implements OnInit{
   friendsCount: number = 22;
   hoursCount: number = 24;
   rank: number = 1;
-  constructor(private router: Router, private tokenService: TokenService) { }
+  idUser: number | null = null;
+  constructor(private router: Router,
+              private tokenService: TokenService,
+              private tokenDecodeService: TokenDecodeService) { }
   goToHome() {
     this.router.navigate(['/Home']);
   }
@@ -36,5 +40,12 @@ export class EcranProfilComponent {
 
     // Redirige vers l'écran de connexion
     this.router.navigate(['/Connexion']); // Remplacez '/login' par la route exacte de la page de connexion
+  }
+
+  // Initialisation des données au montage du composant
+  ngOnInit(): void {
+    // Décodage du token pour récupérer l'ID utilisateur
+    this.idUser = this.tokenDecodeService.getUserId();
+    console.log('ID utilisateur extrait du token :', this.idUser);
   }
 }

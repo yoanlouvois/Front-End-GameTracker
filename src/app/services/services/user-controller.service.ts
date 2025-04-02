@@ -494,6 +494,7 @@ export class UserControllerService extends BaseService {
    * This method sends `application/json` and handles request body of type `application/json`.
    */
   createUser(params: CreateUser$Params, context?: HttpContext): Observable<UserDto> {
+    console.log('Payload envoyé au backend :', params.body); // Ajoutez ce log ici
     return this.createUser$Response(params, context).pipe(
       map((r: StrictHttpResponse<UserDto>): UserDto => r.body)
     );
