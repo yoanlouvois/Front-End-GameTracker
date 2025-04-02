@@ -1,13 +1,18 @@
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <div class="profile-container">
 
   <!-- Section : Profil et actions -->
   <div class="profile-info-section">
-    <img class="profile-img" src="https://placehold.co/183x183" />
+    <div class="profile-header">
+      <img class="profile-img" src="https://placehold.co/183x183" />
+      <label class="player-name">{{username}}</label>
+    </div>
+
+    <!-- Conteneur des boutons -->
     <div class="profile-details">
-      <label class="player-name">{{idUser}}</label>
       <button class="edit-profile" (click)="goToEditerProfil()">Éditer le profil</button>
       <button class="social-btn" (click)="goToSocial()">Social</button>
-      <button class="logout-btn" (click)="logout()">Déconnexion</button>
+      <button class="log-out" (click)="logout()">log out</button>
     </div>
   </div>
 

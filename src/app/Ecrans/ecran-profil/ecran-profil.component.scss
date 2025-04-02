@@ -1,33 +1,26 @@
-:root {
-  --background-color: #221e55;
-  --text-color: white;
-  --label-color: #a9a8a8;
-  --primary-color: #2c2c2c;
-  --hover-color: #b30080;
-  --button-border-color: white;
-}
-
-/* Tous les textes en blanc */
-body,
-.profile-container {
-  color: white; /* Forcer les textes de la page en blanc */
-}
-
 /* Conteneur principal */
 .profile-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
+  align-items: center; /* Centre les éléments verticalement */
+  padding: 38px 30px; /* Espacement global */
   background-color: var(--background-color);
+  gap: 55px; /* Espacement uniforme entre les sections principales */
   width: 100%;
 }
 
 /* SECTION : Image de profil et boutons */
 .profile-info-section {
   display: flex;
-  align-items: center;
-  gap: 20px;
+  align-items: center; /* Aligne le conteneur principale horizontalement */
+  gap: 40px; /* Espacement entre l'image et les boutons */
+}
+
+/* Conteneur pour l'image et le nom */
+.profile-header {
+  display: flex;
+  flex-direction: column; /* Organisation verticale : image au-dessus, nom en dessous */
+  align-items: center; /* Centre l'image et le nom */
+  gap: 10px; /* Espacement entre l'image et le nom */
 }
 
 .profile-img {
@@ -37,80 +30,83 @@ body,
   border: 2px solid var(--primary-color);
 }
 
+.player-name {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  text-align: center; /* Centrer le nom */
+}
+
+/* Boutons */
 .profile-details {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-.player-name {
-  font-size: 24px;
-  font-weight: bold;
-  color: white; /* Texte toujours en blanc */
+  gap: 20px; /* Espacement uniforme entre les boutons */
 }
 
 /* Boutons */
 .edit-profile,
 .social-btn,
-.logout-btn {
+.log-out{
   width: 150px;
   padding: 10px;
   text-align: center;
   background-color: #2c2c2c; /* Couleur initiale */
-  border: 1px solid #2c2c2c; /* Bord sobre */
+  border: 1px solid #2c2c2c;
   border-radius: 5px;
-  color: white; /* Texte toujours en blanc */
+  color: white;
   font-size: 14px;
-  font-family: 'Inter', sans-serif; /* Police propre et lisible */
+  font-family: 'Inter', sans-serif; /* Police sobre */
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
-/* Survol : même comportement pour tous les boutons */
 .edit-profile:hover,
 .social-btn:hover,
-.logout-btn:hover {
-  background-color: #b30080; /* Couleur au survol */
-  transform: scale(1.05); /* Zoom léger */
+.log-out:hover{
+  background-color: #b30080;
+  transform: scale(1.05);
 }
 
 /* SECTION : Statistiques */
 .stats-section {
-  display: flex;
-  gap: 50px;
+  display: flex; /* Aligne les statistiques horizontalement */
+  gap: 75px; /* Espacement uniforme entre les blocs statistiques */
 }
 
 .stat {
-  text-align: center;
+  display: flex;
+  flex-direction: column; /* En colonne : Titre au-dessus, valeur en dessous */
+  align-items: center; /* Centre verticalement les textes */
+  gap: 5px; /* Espace entre le nom de la statistique et sa valeur */
 }
 
 .stat-title {
   font-size: 18px;
-  color: white; /* Titre (AMIS, HEURES DE JEU) en blanc */
+  color: #a9a8a8; /* Couleur grise pour le titre */
 }
 
 .stat-value {
   font-size: 32px;
   font-weight: bold;
-  color: white; /* Valeurs des statistiques en blanc */
+  color: white; /* Texte en blanc pour la valeur */
 }
 
-/* SECTION : Icône et bouton supplémentaire */
+/* SECTION : Icônes et bouton supplémentaire */
 .extra-buttons {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 20px; /* Uniformise l'espacement entre les icônes */
 }
 
 .icon {
   width: 35px;
   height: 35px;
-  filter: brightness(1.2); /* Légère augmentation de la luminosité */
+  filter: brightness(1.2);
 }
 
-/* Bouton circulaire supplémentaire */
 .icon-btn {
   width: 50px;
   height: 50px;
@@ -119,7 +115,7 @@ body,
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-  background-image: url('https://placehold.co/20x20'); /* Icone centrée */
+  background-image: url('https://placehold.co/20x20'); /* Icône centrée */
   background-repeat: no-repeat;
   background-position: center;
   background-size: 60%;
@@ -127,5 +123,5 @@ body,
 
 .icon-btn:hover {
   background-color: var(--hover-color);
-  transform: scale(1.1); /* Légère mise en avant */
+  transform: scale(1.1);
 }
