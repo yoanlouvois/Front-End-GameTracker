@@ -185,3 +185,28 @@ input[matInput] {
   width: 30px;
   line-height: 30px;
 }
+
+/* Forcer la couleur #170B2F pour les champs auto-remplis */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  /* Utilise la couleur spécifiée comme fond */
+  -webkit-box-shadow: 0 0 0 30px #170B2F inset !important;
+  box-shadow: 0 0 0 30px #170B2F inset !important;
+  /* Assure que le texte reste visible sur ce fond */
+  -webkit-text-fill-color: white !important;
+  /* Empêche les transitions qui pourraient annuler ces styles */
+  transition-delay: 99999s;
+  transition-property: background-color, color;
+}
+
+/* Si vous utilisez Angular Material, ajoutez également ceci */
+::ng-deep .mat-form-field-autofilled .mat-input-element {
+  background-color: #170B2F !important;
+  color: white !important;
+}
+
+::ng-deep .mat-form-field.mat-form-field-autofilled .mat-form-field-label {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
