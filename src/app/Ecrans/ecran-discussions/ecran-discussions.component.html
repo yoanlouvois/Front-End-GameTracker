@@ -1,20 +1,36 @@
 <div class="chat-container">
+  <!-- Header du chat avec l'image de profil de l'ami et son nom -->
   <div class="chat-header">
     <div class="profile-picture">
-      <img src="https://placehold.co/61x61" alt="Profil">
+      <!-- Image de profil de l'ami, ici on utilise une image par défaut -->
+      <img [src]="friend?.avatar?.photo || 'https://placehold.co/61x61'" alt="Profil" />
     </div>
-    <div class="username">{{ friend.name }}</div>
+    <!-- Affichage du nom de l'ami, si friend est défini -->
+    <div class="username">{{ friend?.username || 'Nom non disponible' }}</div>
+    <!-- Bouton pour revenir à la page sociale -->
     <button (click)="goToSocial()" class="back-button">Retour</button>
   </div>
 
+  <!-- Section des messages de la conversation -->
   <div class="chat-messages" #messagesContainer>
-    <div *ngFor="let message of messages" [class]="message.sender">
-      <p>{{ message.text }}</p>
+    <!-- Affichage des messages, boucle sur les messages -->
+    <div *ngFor="let message of messages" class="message" [ngClass]="{'sent': message.sender?.id === userId, 'received': message.receiver?.id === userId}">
+      <div class="message-content">
+        <!-- Affichage du contenu du message -->
+        <p>{{ message.content || 'Message vide' }}</p>
+      </div>
+      <div class="message-info">
+        <!-- Affichage de l'heure du message -->
+        <span class="message-time">{{ message.creationDate | date: 'short' }}</span>
+      </div>
     </div>
   </div>
 
+  <!-- Zone de saisie pour écrire un message -->
   <div class="chat-input">
+    <!-- Input pour entrer un message -->
     <input type="text" #messageInput placeholder="Écris ton message..." />
+    <!-- Bouton pour envoyer le message -->
     <button (click)="sendMessage(messageInput)">Envoyer</button>
   </div>
 </div>

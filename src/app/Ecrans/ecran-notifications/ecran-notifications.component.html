@@ -18,7 +18,7 @@
 
     <div class="notification-actions">
       <button *ngIf="request.id !== undefined" class="accept-button" (click)="acceptFriendRequestByUserIds(request.id)">Accepter</button>
-      <button class="decline-button">Refuser</button>
+      <button *ngIf="request.id !== undefined" class="decline-button"(click)="removeFriend(request)">Refuser</button>
     </div>
   </div>
 </div>
