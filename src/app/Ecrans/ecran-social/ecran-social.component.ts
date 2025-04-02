@@ -38,13 +38,43 @@ export class EcranSocialComponent {
         this.friends = friendships
           .filter(f => f.status === 'ACCEPTED')  // Ne garde que celles avec un statut "ACCEPTED"
           .map(f => f.user1?.id === this.userId ? f.user2! : f.user1!);  // Récupère l'utilisateur ami en fonction de l'ID utilisateur
-        console.log("👥 Amis acceptés récupérés :", this.friends);
+        console.log("Amis acceptés récupérés :", this.friends);
       },
       error: (err) => {
-        console.error("❌ Erreur lors de la récupération des amis :", err);
+        console.error("Erreur lors de la récupération des amis :", err);
       }
     });
   }
+
+  removeFriend(friend: UserDto): void {
+    if (this.userId === null || friend.id === undefined) {
+      console.error(" Impossible de supprimer l'ami : ID utilisateur ou ami manquant.");
+      return;
+    }
+
+    this.friendshipControllerService.getFriendshipBetweenUsers({ user1Id: this.userId, user2Id: friend.id }).subscribe({
+      next: (friendship: FriendshipDto) => {
+        if (!friendship.id) {
+          console.error(" Amitié introuvable pour suppression.");
+          return;
+        }
+
+        this.friendshipControllerService.deleteFriendship({ friendshipId: friendship.id }).subscribe({
+          next: () => {
+            console.log(` Amitié avec ${friend.username} supprimée.`);
+            this.friends = this.friends.filter(f => f.id !== friend.id);
+          },
+          error: (err) => {
+            console.error(" Erreur lors de la suppression :", err);
+          }
+        });
+      },
+      error: (err) => {
+        console.error(" Erreur lors de la récupération de l'amitié :", err);
+      }
+    });
+  }
+
 
   goAjouterAmi() {
     this.router.navigate(['/AjouterAmi']);

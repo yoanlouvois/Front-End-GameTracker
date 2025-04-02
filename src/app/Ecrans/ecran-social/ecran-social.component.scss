@@ -93,6 +93,7 @@
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
+  margin-right: 20px;
 }
 
 .action-button:hover {
@@ -125,4 +126,17 @@
   background-color: #0056b3;
   transform: scale(1.05);
 }
+.delete-button {
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  background-color: #3a3c46;
+  color: white;
+  padding: 13px;
+  cursor: pointer;
+  margin-right: 20px;
+}
 
+.delete-button:hover {
+  background-color: darkred;
+}

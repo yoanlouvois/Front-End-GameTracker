@@ -1,33 +1,21 @@
-<div class="container">
-  <div class="header">
-    <h2 class="title">Liste des Amis</h2>
+<div *ngFor="let friend of friends" class="user-card">
+  <div class="user-avatar">
+    <img src="https://via.placeholder.com/60" alt="{{ friend.username }}'s Avatar">
   </div>
 
-  <!-- Si l'utilisateur n'a pas d'amis -->
-  <div *ngIf="friends.length === 0" class="no-friends">
-    Vous n'avez pas encore d'amis.
+  <div class="user-info">
+    <div class="user-name">{{ friend.username }}</div>
   </div>
 
-  <!-- Liste des amis -->
-  <div *ngFor="let friend of friends" class="user-card">
-    <div class="user-avatar">
-      <!-- Avatar de l'ami -->
-      <img src="https://via.placeholder.com/60" alt="{{ friend.username }}'s Avatar">
-    </div>
-
-    <div class="user-info">
-      <div class="user-name">{{ friend.username }}</div>
-    </div>
-
-    <div class="user-actions">
-      <button class="action-button" (click)="goDiscussions(friend.username)">
-        💬 Discuter
-      </button>
-    </div>
+  <div class="user-actions">
+    <button class="action-button" (click)="goDiscussions(friend.username)">
+      💬 Discuter
+    </button>
+    <button class="delete-button" (click)="removeFriend(friend)">
+       Supprimer
+    </button>
   </div>
-
-  <!-- Bouton pour ajouter des amis -->
-  <button class="add-friend-button" (click)="goAjouterAmi()">
-    <span class="plus-icon">➕</span> Ajouter un ami
-  </button>
 </div>
+<button class="add-friend-button" (click)="goAjouterAmi()">
+  ➕ Ajouter un ami
+</button>
