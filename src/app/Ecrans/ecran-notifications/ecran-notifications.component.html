@@ -4,11 +4,6 @@
     Notifications
   </div>
 
-  <!-- Séparateur -->
-  <div class="notifications-divider">
-    <div class="divider-line"></div>
-  </div>
-
   <!-- Si aucune notification -->
   <div *ngIf="pendingRequests.length === 0" class="no-notifications">
     Aucune demande d'amitié en attente.
@@ -16,15 +11,13 @@
 
   <!-- Affichage des demandes -->
   <div *ngFor="let request of pendingRequests" class="notification">
-
-
     <div class="content">
       <strong>Demande d’ajout</strong>
       <p>de la part de <b>{{ request.username }}</b></p>
     </div>
 
     <div class="notification-actions">
-      <button class="accept-button">Accepter</button>
+      <button *ngIf="request.id !== undefined" class="accept-button" (click)="acceptFriendRequestByUserIds(request.id)">Accepter</button>
       <button class="decline-button">Refuser</button>
     </div>
   </div>

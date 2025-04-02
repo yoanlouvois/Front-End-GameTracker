@@ -1,27 +1,33 @@
 <div class="container">
-  <header class="header">
-    <div class="title">Vos amis</div>
-  </header>
-
-  <section class="separator"></section>
-  <button class="action-button" (click)="goAjouterAmi()" >Ajouter un ami</button>
-  <!-- Liste des utilisateurs -->
-  <div class="user-list">
-    <section *ngFor="let friend of friends" class="user-card">
-      <div class="user-avatar">
-        <img [src]="friend.avatar" alt="User Avatar" />
-      </div>
-      <div class="user-info">
-        <span class="user-name">{{ friend.name }}</span>
-      </div>
-      <div class="user-discussion">
-        <img [src]="friend.discussion" alt="Action Icon"(click)="goDiscussions(friend.name)" />
-      </div>
-      <div class="user-supprimer">
-        <img [src]="friend.supprimer" alt="Action Icon" />
-      </div>
-    </section>
+  <div class="header">
+    <h2 class="title">Liste des Amis</h2>
   </div>
 
+  <!-- Si l'utilisateur n'a pas d'amis -->
+  <div *ngIf="friends.length === 0" class="no-friends">
+    Vous n'avez pas encore d'amis.
+  </div>
 
+  <!-- Liste des amis -->
+  <div *ngFor="let friend of friends" class="user-card">
+    <div class="user-avatar">
+      <!-- Avatar de l'ami -->
+      <img src="https://via.placeholder.com/60" alt="{{ friend.username }}'s Avatar">
+    </div>
+
+    <div class="user-info">
+      <div class="user-name">{{ friend.username }}</div>
+    </div>
+
+    <div class="user-actions">
+      <button class="action-button" (click)="goDiscussions(friend.username)">
+        💬 Discuter
+      </button>
+    </div>
+  </div>
+
+  <!-- Bouton pour ajouter des amis -->
+  <button class="add-friend-button" (click)="goAjouterAmi()">
+    <span class="plus-icon">➕</span> Ajouter un ami
+  </button>
 </div>

@@ -48,6 +48,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Ombre légère */
   gap: 12px;
   transition: all 0.3s ease;
+  margin-bottom: 15px;
 }
 
 .notification:hover {
@@ -115,9 +116,9 @@
 .no-notifications {
   text-align: center;
   font-size: 18px;
-  color: #888;
+  color: #ddd;
   padding: 20px;
-  background-color: #fafafa; /* Fond légèrement coloré */
+  background-color: #221E55; /* Fond légèrement coloré */
   border-radius: 8px;
   margin-top: 20px;
 }
