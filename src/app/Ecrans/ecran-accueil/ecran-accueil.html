@@ -1,11 +1,3 @@
 <div class="home-container">
-  <h1>Accueil</h1>
-
-  <div *ngIf="token; else noToken">
-    <p><strong>Token :</strong> {{ token }}</p>
-  </div>
-
-  <ng-template #noToken>
-    <p>Vous n'êtes pas connecté ou localStorage n'est pas disponible.</p>
-  </ng-template>
+  <app-game-list></app-game-list>
 </div>

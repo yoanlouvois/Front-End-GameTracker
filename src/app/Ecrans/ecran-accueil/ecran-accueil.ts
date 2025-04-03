@@ -2,21 +2,20 @@ import {Component, OnInit} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 //import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
-import { TokenService } from '../../services/token/token.service';
+import { GameListComponent } from '../game-list/game-list.component';
 
 
 @Component({
   selector: 'app-new-component',
-  imports: [CommonModule],
+  imports: [CommonModule, GameListComponent],
   templateUrl: './ecran-accueil.html',
   styleUrl: './ecran-accueil.scss'
 })
 export class EcranAccueil implements OnInit {
-  token: string | null = null;
 
-  constructor(private tokenService: TokenService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.token = this.tokenService.token;
+
   }
 }
