@@ -1,6 +1,5 @@
 import { Component, ViewChild, ElementRef, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserDto } from '../../services/models/user-dto';
 import { TokenDecodeService } from '../../services/token/token-decode.service';
 import { MessageControllerService } from '../../services/services/message-controller.service';
@@ -8,21 +7,31 @@ import { MessageDto } from '../../services/models/message-dto';
 import { PageMessageDto } from '../../services/models/page-message-dto';
 import { FriendshipControllerService } from '../../services/services/friendship-controller.service';
 import { SendMessage$Params } from '../../services/fn/message-controller/send-message';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+/**
+ * @component EcranDiscussionsComponent
+ * @description Gère l'affichage et l'envoi de messages entre utilisateurs dans une discussion privée.
+ */
 @Component({
   selector: 'app-ecran-discussions',
   imports: [
-    CommonModule,  // Ajoutez CommonModule ici
+    CommonModule,  // Nécessaire pour les directives Angular courantes
   ],
   templateUrl: './ecran-discussions.component.html',
   styleUrls: ['./ecran-discussions.component.scss']
 })
 export class EcranDiscussionsComponent implements OnInit {
+  /** ID de l'utilisateur connecté */
   userId: number | null = null;
+
+  /** Référence vers le conteneur des messages pour permettre le défilement automatique */
   @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
+
+  /** Liste des messages de la conversation */
   messages: MessageDto[] = [];
+
+  /** Informations de l'ami avec qui l'utilisateur discute */
   friend: UserDto | null | undefined = null;
 
   constructor(
@@ -31,18 +40,22 @@ export class EcranDiscussionsComponent implements OnInit {
     private tokenDecodeService: TokenDecodeService,
     private messageControllerService: MessageControllerService,
     private friendshipControllerService: FriendshipControllerService,
-    private cdr: ChangeDetectorRef // Ajout du ChangeDetectorRef
+    private cdr: ChangeDetectorRef // Permet d'actualiser la vue après envoi de message
   ) {}
 
+  /**
+   * @method ngOnInit
+   * @description Initialise le composant en récupérant l'ID utilisateur et les informations de l'ami
+   */
   ngOnInit() {
-    // Récupérer l'ID de l'utilisateur depuis le service de décryptage du token
+    // Récupérer l'ID utilisateur à partir du token JWT
     this.userId = this.tokenDecodeService.getUserId();
     if (this.userId === null) {
       console.error("Impossible de récupérer l'ID utilisateur.");
       return;
     }
 
-    // Récupérer le nom de l'ami depuis les paramètres de l'URL
+    // Récupérer le pseudo de l'ami depuis l'URL et charger ses informations
     this.route.paramMap.subscribe(params => {
       const friendName = params.get('friendName');
       if (friendName) {
@@ -51,11 +64,18 @@ export class EcranDiscussionsComponent implements OnInit {
     });
   }
 
-  // Charger les données de l'ami en fonction de son nom
+  /**
+   * @method loadFriendData
+   * @description Récupère les informations de l'ami en fonction de son pseudo et charge les messages
+   * @param {string} friendName - Pseudo de l'ami
+   */
   private loadFriendData(friendName: string) {
     this.friendshipControllerService.getAllFriendshipsForUser({ userId: this.userId! }).subscribe({
       next: (friendships) => {
-        const friendship = friendships.find(f => (f.user1?.username === friendName || f.user2?.username === friendName));
+        const friendship = friendships.find(f =>
+          (f.user1?.username === friendName || f.user2?.username === friendName)
+        );
+
         if (friendship) {
           this.friend = friendship.user1?.username === friendName ? friendship.user1 : friendship.user2;
           if (this.friend) {
@@ -71,40 +91,48 @@ export class EcranDiscussionsComponent implements OnInit {
     });
   }
 
-  // Charger les messages de la conversation
+  /**
+   * @method loadMessages
+   * @description Charge les messages de la conversation entre l'utilisateur connecté et son ami
+   */
   private loadMessages() {
     if (!this.friend) return;
+
     this.messageControllerService.getConversation({
       user1Id: this.userId!,
       user2Id: this.friend.id!,
-      pageable: { page: 0, size: 50, sort: ['creationDate,desc'] } // Modification de 'timestamp' par 'creationDate'
+      pageable: { page: 0, size: 50, sort: ['creationDate,desc'] }
     }).subscribe({
       next: (conversation: PageMessageDto) => {
         this.messages = conversation.content || [];
-        this.scrollToBottom(); // Scroller vers le bas pour afficher le dernier message
+        this.scrollToBottom(); // Faire défiler vers le dernier message
       },
       error: (err) => console.error("Erreur lors de la récupération des messages", err)
     });
   }
 
-  // Envoyer un message
+  /**
+   * @method sendMessage
+   * @description Envoie un message à l'ami et met à jour la liste des messages affichés
+   * @param {HTMLInputElement} input - Champ de saisie contenant le message
+   */
   sendMessage(input: HTMLInputElement) {
     if (!this.friend) return;
 
     const messageText = input.value.trim();
     if (messageText === '') return;
 
-    // Créer un objet de type MessageDto
+    // Création de l'objet MessageDto pour l'envoi
     const messageDto: MessageDto = {
       content: messageText,
       creationDate: new Date().toISOString(),
       sender: {
         id: this.userId!,
-        username: 'Nom d’utilisateur',  // Remplacer par les informations réelles si elles existent
+        username: 'Nom d’utilisateur', // À remplacer par les données réelles
       },
       receiver: {
         id: this.friend.id!,
-        username: this.friend.username!,  // Remplacer par les informations réelles si elles existent
+        username: this.friend.username!,
       },
     };
 
@@ -112,22 +140,23 @@ export class EcranDiscussionsComponent implements OnInit {
       body: messageDto
     };
 
-    // Appeler la méthode sendMessage du service pour envoyer le message
+    // Envoi du message via le service
     this.messageControllerService.sendMessage(params).subscribe({
       next: (sentMessage) => {
-        // Ajouter le message envoyé à la liste des messages
         this.messages.push(sentMessage);
-        this.cdr.detectChanges(); // Forcer la mise à jour de la vue
-        this.scrollToBottom(); // Faire défiler l'écran vers le bas
+        this.cdr.detectChanges(); // Forcer l'affichage du nouveau message
+        this.scrollToBottom(); // Faire défiler vers le bas
       },
       error: (err) => console.error("Erreur lors de l'envoi du message", err)
     });
 
-    input.value = ""; // Réinitialiser l'input de message
+    input.value = ""; // Réinitialiser le champ de saisie
   }
 
-
-  // Faire défiler l'écran vers le bas pour afficher le dernier message
+  /**
+   * @method scrollToBottom
+   * @description Fait défiler l'écran vers le bas pour afficher le dernier message envoyé
+   */
   private scrollToBottom() {
     setTimeout(() => {
       const container = this.messagesContainer.nativeElement;
@@ -135,6 +164,10 @@ export class EcranDiscussionsComponent implements OnInit {
     }, 100);
   }
 
+  /**
+   * @method goToSocial
+   * @description Redirige l'utilisateur vers la page Social
+   */
   goToSocial() {
     this.router.navigate(['/Social']);
   }

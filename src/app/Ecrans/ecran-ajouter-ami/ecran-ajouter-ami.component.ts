@@ -9,6 +9,11 @@ import { TokenService } from '../../services/token/token.service';
 import { TokenDecodeService } from '../../services/token/token-decode.service';
 import { MatButton, MatIconButton } from '@angular/material/button';
 
+/**
+ * @component EcranAjouterAmiComponent
+ * @description Ce composant permet à un utilisateur d'envoyer une demande d'amitié
+ * en saisissant le pseudo de l'ami recherché.
+ */
 @Component({
   selector: 'app-ecran-ajouter-ami',
   templateUrl: './ecran-ajouter-ami.component.html',
@@ -25,8 +30,11 @@ import { MatButton, MatIconButton } from '@angular/material/button';
   styleUrls: ['./ecran-ajouter-ami.component.scss']
 })
 export class EcranAjouterAmiComponent implements OnInit {
-  ami: string = ""; // Pseudo de l'ami entré par l'utilisateur
-  private userId: number | null = null; // ID de l'utilisateur connecté
+  /** Pseudo de l'ami entré par l'utilisateur */
+  ami: string = "";
+
+  /** ID de l'utilisateur connecté */
+  private userId: number | null = null;
 
   constructor(
     private router: Router,
@@ -36,19 +44,29 @@ export class EcranAjouterAmiComponent implements OnInit {
     private tokenDecodeService: TokenDecodeService
   ) {}
 
+  /**
+   * @method ngOnInit
+   * @description Récupère l'ID de l'utilisateur connecté à partir du token JWT.
+   */
   ngOnInit(): void {
-    // Récupérer l'ID utilisateur depuis le token
     this.userId = this.tokenDecodeService.getUserId();
     console.log('ID utilisateur extrait du token :', this.userId);
   }
 
-  // Méthode pour envoyer la demande d'amitié
+  /**
+   * @method envoyerDemandeAmi
+   * @description Envoie une demande d'amitié à l'utilisateur correspondant au pseudo entré.
+   * Vérifie d'abord la validité du pseudo, puis récupère l'ID utilisateur via l'API.
+   * En cas de succès, une demande d'amitié est envoyée.
+   */
   envoyerDemandeAmi() {
+    // Vérifie que le pseudo n'est pas vide
     if (!this.ami.trim()) {
       alert("Veuillez entrer un pseudo valide.");
       return;
     }
 
+    // Vérifie que l'utilisateur est bien connecté
     if (!this.userId) {
       alert("Impossible de récupérer votre identifiant utilisateur.");
       return;
@@ -58,7 +76,7 @@ export class EcranAjouterAmiComponent implements OnInit {
     this.userControllerService.getUserByUsername({ username: this.ami }).subscribe({
       next: (user) => {
         if (user && user.id) {
-          const amiId = user.id; // Récupérer l'ID de l'ami depuis la réponse API
+          const amiId = user.id; // ID de l'ami récupéré
 
           if (this.userId === null) {
             alert("Votre identifiant utilisateur est introuvable.");
@@ -66,14 +84,15 @@ export class EcranAjouterAmiComponent implements OnInit {
           }
 
           const params = {
-            senderId: this.userId as number,  // ✅ On est sûr que ce n'est pas null
+            senderId: this.userId as number, // ✅ Conversion sûre
             receiverId: amiId
           };
 
+          // Étape 2 : Envoi de la demande d'amitié
           this.friendshipService.sendFriendRequest(params).subscribe({
             next: () => {
               alert(`Demande d'amitié envoyée à ${this.ami} (ID: ${amiId})!`);
-              this.router.navigate(['/Social']); // Rediriger après l'envoi
+              this.router.navigate(['/Social']); // Redirection après succès
             },
             error: (err) => {
               console.error('Erreur lors de l’envoi de la demande :', err);
@@ -91,7 +110,10 @@ export class EcranAjouterAmiComponent implements OnInit {
     });
   }
 
-  // Méthode pour annuler et rediriger vers la page Social
+  /**
+   * @method goToSocial
+   * @description Annule l'action et redirige l'utilisateur vers la page Social.
+   */
   goToSocial() {
     this.router.navigate(['/Social']);
   }
