@@ -1,0 +1,106 @@
+.game-screen {
+  width: 100%;
+  max-width: 700px; // Réduit de 1200px à 900px
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 10px;
+  color: white; // Texte blanc par défaut
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; // Réduit de 20px à 15px
+}
+
+.game-title {
+  font-size: 28px; // Réduit de 32px à 28px
+  font-weight: bold;
+  color: white; // Changé de #333 à blanc
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.game-description {
+  font-size: 15px; // Réduit de 16px à 15px
+  line-height: 1.5;
+  color: #e0e0e0; // Changé de #666 à blanc légèrement grisé
+  text-align: justify;
+  margin-bottom: 15px;
+}
+
+.game-container {
+  width: 100%;
+  height: 360px; // Réduit de 600px à 500px
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px; // Réduit de 400px à 300px
+  font-size: 18px;
+  color: white; // Changé de #666 à blanc
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 250px; // Réduit de 300px à 250px
+  gap: 20px;
+
+  p {
+    color: #ff6b6b; // Changé de #e53935 à un rouge plus clair
+    font-size: 18px;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #5468ff; // Bleu légèrement ajusté
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #3f51b5;
+    }
+  }
+}
+
+.no-game-url {
+  text-align: center;
+  padding: 30px; // Réduit de 40px à 30px
+  border-radius: 8px;
+
+  p {
+    color: #e0e0e0; // Changé de #666 à blanc légèrement grisé
+    font-size: 16px;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .game-title {
+    font-size: 22px; // Réduit de 24px à 22px
+  }
+
+  .game-description {
+    font-size: 14px;
+  }
+
+  .game-container {
+    height: 400px; // Réduit de 450px à 400px
+  }
+}
+
+@media (max-width: 480px) {
+  .game-container {
+    height: 350px; // Encore plus petit pour les mobiles
+  }
+}

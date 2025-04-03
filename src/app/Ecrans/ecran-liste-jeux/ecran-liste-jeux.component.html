@@ -9,9 +9,8 @@
       <input
         type="text"
         placeholder="Rechercher un jeu..."
-        [(ngModel)]="searchQuery"
-        (input)="filterGames(searchQuery)"
         class="search-bar"
+        disabled
       />
     </div>
   </div>
@@ -25,27 +24,13 @@
       </div>
       <div class="accordion-body" *ngIf="sortAccordionOpen">
         <!-- Options de tri -->
-        <button class="sort-button" (click)="sortGames('title')">Titre (A-Z)</button>
-        <button class="sort-button" (click)="sortGames('rating')">Note (élevée à basse)</button>
-        <button class="sort-button" (click)="sortGames('release')">Date de sortie (récentes)</button>
+        <button class="sort-button">Titre (A-Z)</button>
+        <button class="sort-button">Note (élevée à basse)</button>
+        <button class="sort-button">Date de sortie (récentes)</button>
       </div>
     </div>
   </div>
 
-  <!-- Grille des jeux -->
-  <div class="games-grid">
-    <!-- Placeholder pour les jeux (sera complété dynamiquement avec Angular ou autre framework) -->
-    <div class="game-item" *ngFor="let game of filteredGames">
-      <!-- Image du jeu insérée dynamiquement -->
-      <img [src]="game.thumbnail" [alt]="game.title" class="game-thumbnail" />
-
-      <!-- Titre du jeu -->
-      <p class="game-title">{{ game.title }}</p>
-
-      <!-- Évaluation/notes dynamiques -->
-      <div class="game-rating">
-        <span *ngFor="let star of game.stars" class="star">⭐</span>
-      </div>
-    </div>
-  </div>
+  <!-- Intégration du composant de liste de jeux -->
+  <app-game-list></app-game-list>
 </div>

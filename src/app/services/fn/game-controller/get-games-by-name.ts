@@ -30,4 +30,4 @@ export function getGamesByName(http: HttpClient, rootUrl: string, params: GetGam
   );
 }
 
-getGamesByName.PATH = '/gametracker/v1/game/{name}';
+getGamesByName.PATH = '/gametracker/v1/game/name/{name}';

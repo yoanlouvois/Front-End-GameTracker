@@ -17,6 +17,7 @@ export interface GameDto {
   isActive?: boolean;
   lastModifiedDate?: string;
   leaderboardEntries?: Array<GameLeaderboardDto>;
+  imageUrl: string;
   minAge?: number;
   name?: string;
   playCount?: number;

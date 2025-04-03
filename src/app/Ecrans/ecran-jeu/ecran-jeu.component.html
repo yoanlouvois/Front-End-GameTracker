@@ -1,1 +1,29 @@
-<p>ecran-jeu works!</p>
+<div class="game-screen">
+  <div *ngIf="loading" class="loading-container">
+    <p>Chargement du jeu...</p>
+    <!-- Vous pouvez ajouter un spinner ici -->
+  </div>
+
+  <div *ngIf="error" class="error-container">
+    <p>{{ error }}</p>
+    <button routerLink="/ListeJeux">Retour à la liste des jeux</button>
+  </div>
+
+  <div *ngIf="!loading && !error && game" class="content">
+    <div class="game-title">{{ game.name }}</div>
+
+    <div class="game-description">
+      {{ game.description || 'Aucune description disponible pour ce jeu.' }}
+    </div>
+
+    <iframe *ngIf="safeGameUrl"
+            class="game-container"
+            [src]="safeGameUrl"
+            allowfullscreen>
+    </iframe>
+
+    <div *ngIf="!safeGameUrl" class="no-game-url">
+      <p>Le lien vers ce jeu n'est pas disponible.</p>
+    </div>
+  </div>
+</div>

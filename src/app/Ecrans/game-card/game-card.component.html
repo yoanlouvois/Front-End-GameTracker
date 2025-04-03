@@ -1,0 +1,11 @@
+<!-- game-card.component.html -->
+<div class="game-card" (click)="openGame()">
+  <div class="game-image">
+    <img [src]="game.imageUrl" [alt]="game.name">
+  </div>
+  <div class="game-info">
+    <h3>{{ game.name }}</h3>
+    <p class="game-category">{{ game.category }}</p>
+    <p class="game-difficulty">Difficulté: {{ game.difficultyLevel }}</p>
+  </div>
+</div>

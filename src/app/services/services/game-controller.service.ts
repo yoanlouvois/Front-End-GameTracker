@@ -129,7 +129,7 @@ export class GameControllerService extends BaseService {
   }
 
   /** Path part for operation `getGamesByName()` */
-  static readonly GetGamesByNamePath = '/gametracker/v1/game/{name}';
+  static readonly GetGamesByNamePath = '/gametracker/v1/game/name/{name}';
 
   /**
    * Récupérer des jeux par nom.
