@@ -5,6 +5,7 @@ import { map, tap, catchError } from 'rxjs/operators';
 import { GameControllerService } from './services/game-controller.service';
 import { GameDto } from './models/game-dto';
 import {Game} from './models/game';
+import {Pageable} from './models/pageable';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class GestionGameService {
   // Indique si les données ont déjà été chargées
   private loaded = false;
 
-  constructor(private gameControllerService: GameControllerService) { }
+  constructor(private gameControllerService: GameControllerService) {
+  }
 
   loadAllGames(forceRefresh = false): Observable<GameDto[]> {
     // Si les jeux sont déjà chargés et qu'on ne force pas le rafraîchissement
@@ -34,7 +36,7 @@ export class GestionGameService {
       sort: ['name,asc']
     };
 
-    return this.gameControllerService.getAllGames({ pageable }).pipe(
+    return this.gameControllerService.getAllGames({pageable}).pipe(
       map(pageData => pageData.content || []),
       tap(games => {
         this.gamesSubject.next(games);
@@ -50,7 +52,7 @@ export class GestionGameService {
   getGameByName(name: string): Observable<Game | undefined> {
     console.log('GestionGameService: Recherche du jeu par nom:', name);
 
-    return this.gameControllerService.getGamesByName({ name }).pipe(
+    return this.gameControllerService.getGamesByName({name}).pipe(
       tap(games => {
         console.log('GestionGameService: Résultat brut de l\'API:', games);
         console.log('GestionGameService: Nombre de jeux trouvés:', games ? games.length : 0);
@@ -74,5 +76,33 @@ export class GestionGameService {
         return of(undefined);
       })
     );
+  }
+
+  // Dans GestionGameService
+  getNewestGames(): Observable<GameDto[]> {
+    const pageable: Pageable = {
+      page: 0,
+      size: 4,
+      sort: ['creationDate,desc']
+    };
+
+    return this.gameControllerService.getNewestGames({ pageable })
+      .pipe(
+        map(games => games.map(game => this.convertGameToGameDto(game)))
+      );
+  }
+
+// Méthode pour convertir un Game en GameDto
+  private convertGameToGameDto(game: Game): GameDto {
+    return {
+      id: game.id,
+      name: game.name,
+      category: game.category,
+      difficultyLevel: game.difficultyLevel,
+      imageUrl: game.imageUrl || 'assets/default-game-image.jpg', // Fournir une image par défaut si non disponible
+      // ajoutez les autres propriétés requises par GameDto
+      // Par exemple, si GameDto a d'autres propriétés que Game n'a pas :
+      // propriétéSupplementaire: valeurParDéfaut
+    };
   }
 }

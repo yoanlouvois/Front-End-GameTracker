@@ -19,6 +19,7 @@ export interface Game {
   favoriteGames?: Array<FavoriteGame>;
   id?: number;
   isActive?: boolean;
+  imageUrl: string;
   leaderboardEntries?: Array<GameLeaderboard>;
   minAge?: number;
   name?: string;
