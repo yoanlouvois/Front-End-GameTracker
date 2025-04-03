@@ -1,0 +1,16 @@
+<!-- newest-games.component.html -->
+<div class="games-container">
+  <div *ngIf="loading" class="loading-spinner">
+    <p>Chargement des jeux les plus récents...</p>
+  </div>
+
+  <div class="games-grid" *ngIf="!loading">
+    <ng-container *ngIf="(newestGames$ | async) as games">
+      <app-game-card *ngFor="let game of games" [game]="game"></app-game-card>
+
+      <div *ngIf="games.length === 0" class="no-games">
+        <p>Aucun nouveau jeu disponible pour le moment.</p>
+      </div>
+    </ng-container>
+  </div>
+</div>

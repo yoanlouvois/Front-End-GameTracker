@@ -13,6 +13,7 @@ import {EcranNotificationsComponent} from './Ecrans/ecran-notifications/ecran-no
 import {EcranDiscussionsComponent} from './Ecrans/ecran-discussions/ecran-discussions.component';
 import {EcranAjouterAmiComponent} from './Ecrans/ecran-ajouter-ami/ecran-ajouter-ami.component';
 import {GameListComponent} from './Ecrans/game-list/game-list.component';
+import {NewestGamesComponent} from './Components/newest-games/newest-games.component';
 
 
 export const routes: Routes = [
@@ -31,7 +32,8 @@ export const routes: Routes = [
   { path: 'Notifications', component: EcranNotificationsComponent},
   { path: 'Discussions', component: EcranDiscussionsComponent},
   { path: 'Discussions/:friendName', component: EcranDiscussionsComponent },
-  { path: 'GameList', component: GameListComponent}
+  { path: 'GameList', component: GameListComponent},
+  { path: 'NewestGameList', component: NewestGamesComponent}
 
 ];
 

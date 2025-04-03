@@ -1,0 +1,35 @@
+/* ecran-accueil.component.scss */
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.welcome-text {
+  color: white;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  padding: 20px 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.section-header {
+  margin-bottom: 30px;
+  text-align: center;
+
+  h1 {
+    font-size: 32px;
+    color: white;
+    margin-bottom: 15px; // Espace entre le titre et la ligne
+    font-weight: 600;
+    text-align: left;
+  }
+
+  .header-line {
+    height: 2px;
+    background: white;
+    width: 100%; // Vous pouvez ajuster la largeur de la ligne
+    margin: 0 auto; // Centre la ligne horizontalement
+  }
+}
