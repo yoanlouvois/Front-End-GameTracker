@@ -1,59 +1,85 @@
-# MonPremierProjet
+# GameTracker Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
+## Présentation
 
-## Development server
+GameTracker est une plateforme web full-stack dédiée aux jeux HTML5 en ligne. L'application permet aux utilisateurs de créer un compte, gérer leur profil joueur, découvrir et lancer des jeux directement depuis leur navigateur, interagir avec leurs amis et débloquer des trophées.
 
-To start a local development server, run:
+<p align="center">
+  <img width="431" height="308" alt="Capture d&#39;écran 2026-05-08 001001" src="https://github.com/user-attachments/assets/e62a24cb-662f-494f-b5b5-d082151dedbe" />
+/p>
+
+
+Le frontend est développé avec **Angular**, **HTML** et **SCSS**, tandis que le backend repose sur **Spring Boot** et **MySQL**.
+
+### Dépôt Backend
+
+Lien vers le dépôt backend : https://github.com/MorganPhlp/GameTrackerProject
+
+---
+
+## Fonctionnalités
+
+L'application est composée de plusieurs vues et modules :
+
+### Authentification
+
+* Création de compte
+* Connexion utilisateur
+* Gestion sécurisée des comptes
+
+### Profil Joueur
+
+* Gestion du profil personnel
+* Consultation des statistiques
+* Suivi des trophées débloqués
+
+### Gestion des Amis
+
+* Ajout et suppression d'amis
+* Consultation des profils des amis
+* Interactions sociales entre joueurs
+
+### Catalogue de Jeux
+
+* Parcourir les jeux disponibles / jeux récents
+* Lancer des jeux HTML5 directement dans le navigateur
+
+### Recommandations
+
+* Recommander des jeux à ses amis
+* Découvrir les recommandations reçues
+
+---
+
+
+## Lancer le projet
+
+### Installation des dépendances
+
+```bash
+npm install
+```
+
+### Démarrage du serveur de développement
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+L'application sera accessible à l'adresse :
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```text
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Le rechargement est automatique lors des modifications du code source.
 
-```bash
-ng generate --help
-```
+---
 
-## Building
-
-To build the project run:
+## Génération d'un build de production
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Les fichiers compilés seront générés dans le dossier `dist/`.
