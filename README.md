@@ -27,9 +27,6 @@ L'application est composée de plusieurs vues et modules :
 * Connexion utilisateur
 * Gestion sécurisée des comptes
 
-<p align="center">
-  <img width="50%" alt="Capture d’écran (48)" src="https://github.com/user-attachments/assets/bd4ae7cb-6937-4ce2-bed2-ace1fd129d5c" />
-
 ### Profil Joueur
 
 * Gestion du profil personnel
@@ -46,9 +43,6 @@ L'application est composée de plusieurs vues et modules :
 
 * Parcourir les jeux disponibles / jeux récents
 * Lancer des jeux HTML5 directement dans le navigateur
-
-<p align="center">
-  <img width="50%" alt="Capture d’écran (47)" src="https://github.com/user-attachments/assets/621f85d3-0333-47c5-b605-f56866d470b3" />
 
 ### Recommandations
 
